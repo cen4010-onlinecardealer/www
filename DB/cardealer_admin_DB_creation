@@ -23,4 +23,37 @@ insert into cardealerdb.users values(1001,'admin','admin',
 
 drop table if exists cardealerdb.carinventory;
 create table cardealerdb.carinventory(
+    carid   int unsigned not null auto_increment,
+    cardesc varchar(50) default '',
+    year    int unsigned not null ,
+    make    varchar(30) not null ,
+    model   varchar(30) not null ,
+    newcar  tinyint not null , # 0 is false 1 is true
+    picture longblob ,
+    milage  int unsigned not null default 0,
+    price   float not null ,
+    notes   text ,
+    primary key (carid));
+
+insert into cardealerdb.carinventory values
+    (10001, 'Mint Condition, must sell!!!', 2005 ,
+     'Toyota' , 'Corolla' , 0 ,null , 40200 , 5350.50 ,
+     'Single owner, needs a little paint'),
+    (10002, 'Just out of the oven!!!', 2015 ,
+     'Honda' , 'Accord' , 1 ,null , 0 , 20240.60 ,
+     'Cannot beat this deal...'),
+    (10003, 'Not for the faint of heart!!!', 2015 ,
+     'Ford' , 'Mustang' , 1 ,null , 0 , 21120.10 ,
+     'Has no equal...'),
+    (10004, 'Give away!!!', 2008 ,
+     'Toyota' , 'Camry' , 0 ,null , 70000 , 4550.20 ,
+     'Wont last!'),
+    (10005, 'Mint Condition, must sell!!!', 2004 ,
+     'Nissan' , 'Maxima' , 0 ,null , 35100 , 7650.50 ,
+     'Single owner!'),
+    (10006, 'This is it!!!', 2015 ,
+     'Toyota' , '4 Runner' , 1 ,null , 0 , 25950.50 ,
+     'Best in its class!!!');
+
+_
             
