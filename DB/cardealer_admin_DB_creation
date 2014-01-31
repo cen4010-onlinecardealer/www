@@ -30,7 +30,7 @@ create table cardealerdb.carinventory(
     model   varchar(30) not null ,
     newcar  tinyint not null , # 0 is false 1 is true
     picture longblob ,
-    milage  int unsigned not null default 0,
+    mileage  int unsigned not null default 0,
     price   float not null ,
     notes   text ,
     primary key (carid));
@@ -55,5 +55,5 @@ insert into cardealerdb.carinventory values
      'Toyota' , '4 Runner' , 1 ,null , 0 , 25950.50 ,
      'Best in its class!!!');
 
-_
+
             
