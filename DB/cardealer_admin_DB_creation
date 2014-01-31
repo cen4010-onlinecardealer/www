@@ -1,2 +1,14 @@
-drop schema if exists `test`;
+drop schema if exists cardealerdb;
 create schema cardealerdb;
+
+drop table if exists cardealerdb.users;
+create table cardealerdb.users(
+      uid       varchar(10) not null ,
+      first     varchar(20) not null default '',
+      last      varchar(20) not null default '',
+      tel       varchar(10) not null default '',
+      address1  varchar(20) not null default '',
+      address2  varchar(20) default '',
+      zip       varchar(5)  default '',
+      ulevel    int unsigned not null);
+
