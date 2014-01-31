@@ -3,12 +3,24 @@ create schema cardealerdb;
 
 drop table if exists cardealerdb.users;
 create table cardealerdb.users(
-      uid       varchar(10) not null ,
-      first     varchar(20) not null default '',
-      last      varchar(20) not null default '',
-      tel       varchar(10) not null default '',
-      address1  varchar(20) not null default '',
-      address2  varchar(20) default '',
-      zip       varchar(5)  default '',
-      ulevel    int unsigned not null);
+    uid       int unsigned not null auto_increment,
+    username  varchar(10)  not null ,
+    password  varchar(20)  not null ,
+    first     varchar(20)  not null default '',
+    last      varchar(20)  not null default '',
+    tel       varchar(10)  not null default '',
+    address1  varchar(20)  not null default '',
+    address2  varchar(20)  default '',
+    zip       varchar(5)   default '',
+    ulevel    int unsigned not null,
+    primary key (uid));
 
+#Administrator users will be ulevel 0
+#Regular users will be ulevel 1
+#an admin account is created by default
+insert into cardealerdb.users values(1001,'admin','admin',
+      '','','','','','',0);
+
+drop table if exists cardealerdb.carinventory;
+create table cardealerdb.carinventory(
+            
