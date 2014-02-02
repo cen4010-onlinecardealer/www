@@ -1,7 +1,7 @@
 
 <title>Online Car Dealer</title>
 <body>
-<img src="cardealer_logo.jpg" alt="Car Dealer Logo" width="100" height="90">
+<img src="cardealer_logo2.jpg" alt="Car Dealer Logo" width="400" height="100">
 <h1>Car Inventory</h1>
 
 
