@@ -1,0 +1,226 @@
+Name:  ADMIN OPTIONS
+Actors:
+	Admin
+Entry condition:
+	This use case starts when Admin clicks the option to go to 
+	the Admin Home page or Logs in.
+Flow of Events:
+	Admin Enters in the home page and sees the Admin options.
+Exit condition:
+	This use case terminates when Admin chooses option, or redirects 
+	to regular Home page, or closes the page.
+Exceptions:
+	if connection fails: Reload Admin Home page.
+Special Requirements:
+	Admin needs to be able to access all Admin options from here.
+	Admin needs to have a way to go back to the regular web Home.
+
+
+
+Name:  ADD ADMIN
+Actors:
+	Admin
+Entry condition:
+	This use case starts when Admin selects option "Add Admin" 
+	from Admin Home page
+Flow of Events:
+	Admin Fills out new Admin information
+	Admin presses Add Admin
+Exit condition:
+	This use case terminates when Admin presses button "Add Admin"
+Exceptions:
+	If connection fails when adding admin: 	display error message
+						let creator retry or leave
+	If record is already created: not add Admin
+Special Requirements:
+	Admin being created must have the following fields not blank:
+		username
+		password
+		Name
+
+
+
+Name:  ADMIN REGISTERED USERS
+Actors:
+	Admin
+Entry condition:
+	This use case starts when Admin clicks the option "Registered Users" 
+	from Admin Home page
+Flow of Events:
+	Admin enters in the Registered Users page and sees the Registered
+	Users options.
+Exit condition:
+	This use case terminates when Admin chooses option, or redirects to 
+	regular Home page, or closes the page.
+Exceptions:
+	if connection fails: Reload Registered Users page.
+Special Requirements:
+	Admin needs to be able to access all options to manage users
+	from here.
+
+
+
+Name:  ADMIN REMOVE USER
+Actors:
+	Admin
+Entry condition:
+	This use case starts when Admin selects option "Registered Users" 
+	from Admin Home page
+Flow of Events:
+	Admin checks user that wants to remove
+	Admin presses button: Remove selected Users
+Exit condition:
+	This use case terminates when Admin leaves page or selects an 
+	user or the option to Add User or Admin removes Users
+Exceptions:
+	if connection fails: 	display error message
+				not remove users
+Special Requirements:
+	there has to be at least one user selected
+
+
+
+Name:  ADMIN UPDATE USER
+Actors:
+	Admin
+Entry condition:
+	This use case starts when Admin selects an user from "Registered 
+	Users" page
+Flow of Events:
+	Admin updates user information
+	Admin presses button "Update"	
+Exit condition:
+	This use case terminates when Admin selects option "Update"
+Exceptions:
+	if connection fails:	display error message
+				not update user information
+Special Requirements:
+	User must already exist
+	
+
+
+Name:  ADMIN ADD USER  
+Actors:
+	Admin
+Entry condition:
+	This use case starts when Admin selects the option "Create User" 
+	from "Registered Users" page
+Flow of Events:
+	Admin fills out the new user information
+	Admin selects option "Add User"
+Exit condition:
+	This use case terminates when fields meet requirements when 
+	"Add User" is pressed
+Exceptions:
+	if connection fails: 	display error message
+				not add user
+	if user already exists: display error message
+Special Requirements:
+	User being created must have the following fields not blank:
+		username
+		password
+		Name
+
+
+
+Name:  ADMIN CAR INVENTORY
+Actors:
+	Admin
+Entry condition:
+	This use case starts when Admin clicks the option "Car Inventory" 
+	from Admin Home page
+Flow of Events:
+	Admin enters in the Car Inventory page and sees the Car options.
+Exit condition:
+	This use case terminates when Admin chooses option, or redirects 
+	to regular Home page or Admin page, or closes the page.
+Exceptions:
+	if connection fails: Reload Car Inventory page.
+Special Requirements:
+	Admin needs to be able to access all options to manage cars
+	from here.
+
+
+
+Name:  ADMIN REMOVE CAR
+Actors:
+	Admin
+Entry condition:
+	This use case starts when Admin selects option "Car Inventory" 
+	from Admin Home page
+Flow of Events:
+	Admin checks car that wants to remove
+	Admin presses button: Remove Selected Cars
+Exit condition:
+	This use case terminates when Admin leaves page or selects a 
+	car or the option to Add Car or	Admin removes Cars
+Exceptions:
+	if connection fails: 	display error message
+				not remove cars
+Special Requirements:
+	there has to be at least one car selected
+
+
+Name:  ADMIN ADD CAR
+Actors:
+	Admin
+Entry condition:
+	This use case starts when Admin selects the option "Add Car" 
+	from "Car Inventory" page
+Flow of Events:
+	Admin fills out the new car information
+	Admin selects option "Add Car"
+Exit condition:
+	This use case terminates when fields meet requirements when 
+	"Add Car" is pressed
+Exceptions:
+	if connection fails: 	display error message
+				not add user
+	if car already exists: display error message
+Special Requirements:
+	Car being created must have the following fields not blank:
+		VIN
+		Make
+		Model
+		Year
+
+
+
+Name:  ADMIN EDIT CAR
+Actors:
+	Admin
+Entry condition:
+	This use case starts when Admin selects a car from "Car 
+	Inventory" page
+Flow of Events:
+	Admin updates car information
+	Admin presses button "Update"	
+Exit condition:
+	This use case terminates when Admin selects option "Update"
+Exceptions:
+	if connection fails:	display error message
+				not update user information
+Special Requirements:
+	Car must already exist
+
+
+
+Name:  ADMIN REPORTS
+Actors:
+	Admin
+Entry condition:
+	This use case starts when Admin selects "Reports" from the 
+	Admin Home page
+Flow of Events:
+	Admin Specifies which report he wants to see:
+		Sales
+	Report is displayed
+Exit condition:
+	This use case terminates when Admin sees selected report
+Exceptions:
+	if connection fails: display error message
+Special Requirements:
+	
+
+
+
