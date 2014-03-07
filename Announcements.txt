@@ -1,4 +1,4 @@
 Announcements:
 
 AC:
-Guys i Can't Push to docs, so i put a doc in www.
+I posted what i had so far, i have to test it in linux at home.
