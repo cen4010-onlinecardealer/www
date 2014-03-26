@@ -8,79 +8,81 @@ include "header.php";
 <br/>
 <br/>
 <Form name='createLogin' method='POST' action='LogIn.php'>
-<table name='orgLoginRegister' border='2' align='center' width='70%'>
+<table name='orgLoginRegister' border='1' align='center' width='70%' style='border-color:#104E8B;background-color:EFEBD6;color:FF6600'>
 	<tr>
-		<td></td>
-		<td colspan='3'>Login or Create an Account</td>
-		<td></td>
+		<td style='border:0'></td>
+		<td colspan='3' style='border:0'><b style='font-size:14;color:#C13100'>Login or Create an Account:</b><br/><br/></td>
+		<td style='border:0'></td>
 	</tr>
 	<tr>
-		<td>1</td>
-		<td width='50%' valign='top' >
-						New Users<br/>
-						<table border='0' name='orgNew' width='100%'>
+		<td style='width:2%;border:0'></td>
+		<td width='40%' valign='top' style='background-color:#DDDDDD;border:0'>
+						<b style='font-size:12'>New Users:</b><br/>
+						<hr/>
+						<table border='0' name='orgNew' width='100%' style='font-size:11;'>
 							<tr>
 								<td>
-									First Name:*<br/>
+									First Name <span style='color:red'>*</span><br/>
 									<input type='text' style="width:80%" name='firstName'/>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									Last Name:*<br/>
+									Last Name <span style='color:red'>*</span><br/>
 									<input type='text' style="width:80%" name='lastName'/>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									Email Address:*<br/>
+									Email Address <span style='color:red'>*</span><br/>
 									<input type='text' style="width:80%" name='email'/>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									Password:*<br/>
+									Password <span style='color:red'>*</span><br/>
 									<input type='text' style="width:80%" name='password'/>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									Confirm Password:*<br/>
+									Confirm Password <span style='color:red'>*</span><br/>
 									<input type='text' style="width:80%" name='confPassword'/>
 								</td>
 							</tr>
 						</table>
 		</td>
-		<td>3</td>
-		<td width='50%' valign='top' >
-						Registered Users
-						<table border='0' name='orgNew'>
+		<td style='width:2% ;border:0'></td>
+		<td width='40%' valign='top' style='background-color:#DDDDDD;border:0'>
+						<b style='font-size:12'>Registered Users</b>
+						<hr/>
+						<table border='0' name='orgNew' width='100%' style='font-size:11'>
 							<tr>
 									<td>
-										Email Address:*<br/>
+										Email Address <span style='color:red'>*</span><br/>
 										<input type='text' style="width:80%" name='emailLogin'/>
 									</td>
 							</tr>
 							<tr>
 									<td>
-										Password:*<br/>
+										Password <span style='color:red'>*</span><br/>
 										<input type='text' style="width:80%" name='passwordLogin'/>
 									</td>
 							</tr>
 						</table>
 		</td>
-		<td>5</td>
+		<td style='width:2%;border:0'></td>
 	</tr>
 	<tr>
-		<td></td>
-		<td>
+		<td style='border:0'></td>
+		<td style='background-color:#C2DFFF; text-align:right;border:0'>
 			<input type='Submit' name='create' value='Create an Account'/>
 		</td>
-		<td></td>
-		<td>
+		<td style='border:0'></td>
+		<td style='background-color:#C2DFFF; text-align:right;border:0'>
 			<input type='Submit' name='login' value='Log In'/>
 		</td>
-		<td></td>
+		<td style='border:0'></td>
 	</tr>
 </table>
 </Form>
