@@ -1,11 +1,12 @@
 
-<title>Online Car Dealer</title>
+<!-- <title>Online Car Dealer</title> -->
 <body>
 <img src="cardealer_logo2.jpg" alt="Car Dealer Logo" width="400" height="100">
 <h1>Car Inventory</h1>
 
 
 <?php
+if(isset($_POST['search'])){
 $con=mysqli_connect("localhost","root","jhweb123","cardealerdb");
 // Check connection
 if (mysqli_connect_errno())
@@ -41,6 +42,10 @@ while($row = mysqli_fetch_array($result))
 echo "</table>";
 
 mysqli_close($con);
-?> 
+}
+else{
+
+}
+?>
 </body>
 </html>

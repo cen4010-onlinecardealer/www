@@ -86,3 +86,6 @@ include "header.php";
 	</tr>
 </table>
 </Form>
+<?php
+include "footer.php";
+?>
