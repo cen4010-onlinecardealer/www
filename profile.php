@@ -21,7 +21,7 @@ include "header.php";
 		<td><Form name='editDemographics' method='post' action='profile.php'>
 			<fieldset class='divFormatHeader'><legend>Account Details</legend>
 			<table border='0' width='100%' name='orgAccountDetails'>
-				<tr font='1'>
+				<tr>
 					<td valign='top' width='60%'>
 						<fieldset class='divFormat'><legend>LastName, FirstName:</legend>
 							<?php
