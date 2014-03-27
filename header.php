@@ -37,7 +37,7 @@ $user = 0;
 	<div id="pageCont">
 	<div id="navBar2">
 		<?php
-		if($user==1){echo "<a href='#'>Account Info..</a>";}
+		if($user==1){echo "<a href='profile.php'>Account Info..</a>";}
 		if($admin==1){echo "&nbsp&nbsp&nbsp&nbsp&nbsp<a href='#'>ADMIN HOME</a>";}
 		if($admin==0 && $user==0){echo "<a href='LogIn.php'>Log In/Register</a>";}
 		?>
