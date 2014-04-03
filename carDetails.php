@@ -4,7 +4,7 @@ $activeIndex=0;
 include "header.php";
 ?>
 
-<table border='2' width='100%' name='orgStudentDemographics'>
+<table border='0' width='100%' name='orgStudentDemographics'>
 	<tr>
 		<td colspan='5' align='center'><h3>"Car Details"</h3></td>
 	</tr>
@@ -20,7 +20,7 @@ include "header.php";
 		<td width='3%'></td>
 		<td valign='top'>
 			<fieldset class='divFormatHeader'><legend>Specifics</legend>
-			<table border='2' width='100%' name='orgCarDetails' style='font-size:12'>
+			<table border='0' width='100%' name='orgCarDetails' style='font-size:12'>
 				<tr>
 					<td>
 						<b>Make:</b>
@@ -63,7 +63,14 @@ include "header.php";
 		<td width='3%'></td>
 	</tr>
 	<tr>
-		<td colspan='5'>PICTURES</td>
+		<td colspan='5'>PICTURES:
+			<br/><br/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan='5'>Additional Details:
+			<br/><br/>
+		</td>
 	</tr>
 </table>
 

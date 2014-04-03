@@ -5,8 +5,8 @@
 </head>
 <body>
 <?php
-$admin = 0;
-$user = 0;
+$admin = 1;
+$user = 1;
 ?>
 
 
@@ -38,12 +38,12 @@ $user = 0;
 	<div id="navBar2">
 		<?php
 		if($user==1){echo "<a href='profile.php'>Account Info..</a>";}
-		if($admin==1){echo "&nbsp&nbsp&nbsp&nbsp&nbsp<a href='#'>ADMIN HOME</a>";}
+		if($admin==1){echo "&nbsp&nbsp&nbsp&nbsp&nbsp<a href='adminMain.php'>ADMIN HOME</a>";}
 		if($admin==0 && $user==0){echo "<a href='LogIn.php'>Log In/Register</a>";}
 		?>
 	</div>
 <?php
 $link = mysql_connect('localhost:3306', 'root', '');
 if (!$link) {die('Not connected : ' . mysql_error());}
-$db_selected = mysql_select_db('idrecords', $link);
+$db_selected = mysql_select_db('ocs', $link);
 ?>	

@@ -5,7 +5,7 @@
 <h1>Car Inventory</h1>
 
 
-<?php
+<?php //jhweb123
 if(isset($_POST['search'])){
 $con=mysqli_connect("localhost","root","jhweb123","cardealerdb");
 // Check connection
