@@ -1,9 +1,9 @@
 <?php
-if(1){//DB Connection
+if(0){//DB Connection
 	$dbLocalhost="localhost:3306";
 	$dbUser="root";
 	$dbPw="";
-	$dbDb="ocsV2";
+	$dbDb="ocs";
 }
 else{//Linux
 	$dbLocalhost="localhost";
