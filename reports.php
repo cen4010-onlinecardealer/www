@@ -1,6 +1,7 @@
 <?php
 $title= "Car Inventory";
 $activeIndex=0;
+include "methods.php";
 include "header.php";
 ?>
 

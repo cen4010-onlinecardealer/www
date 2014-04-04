@@ -1,6 +1,7 @@
 <?php
 $title= "Add Admin";
 $activeIndex=0;
+include "methods.php";
 include "header.php";
 ?>
 <!-- Error: Admin could not be added -->

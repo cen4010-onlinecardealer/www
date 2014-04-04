@@ -1,6 +1,7 @@
 <?php
 $title= "Log In";
 $activeIndex=0;
+include "methods.php";
 include "header.php";
 ?>
 
@@ -34,6 +35,12 @@ include "header.php";
 							</tr>
 							<tr>
 								<td>
+									Username <span style='color:red'>*</span><br/>
+									<input type='text' style="width:80%" name='usernameNew'/>
+								</td>
+							</tr>
+							<tr>
+								<td>
 									Email Address <span style='color:red'>*</span><br/>
 									<input type='text' style="width:80%" name='email'/>
 								</td>
@@ -59,8 +66,8 @@ include "header.php";
 						<table border='0' name='orgNew' width='100%' style='font-size:11'>
 							<tr>
 									<td>
-										Email Address <span style='color:red'>*</span><br/>
-										<input type='text' style="width:80%" name='emailLogin'/>
+										Username <span style='color:red'>*</span><br/>
+										<input type='text' style="width:80%" name='username'/>
 									</td>
 							</tr>
 							<tr>

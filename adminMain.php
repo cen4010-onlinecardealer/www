@@ -1,6 +1,7 @@
 <?php
 $title= "Admin Home";
 $activeIndex=0;
+include "methods.php";
 include "header.php";
 ?>
 

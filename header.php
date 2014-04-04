@@ -4,10 +4,7 @@
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>
-<?php
-$admin = 1;
-$user = 1;
-?>
+
 
 
 <div id="bodyDiv" >
@@ -37,13 +34,16 @@ $user = 1;
 	<div id="pageCont">
 	<div id="navBar2">
 		<?php
-		if($user==1){echo "<a href='profile.php'>Account Info..</a>";}
-		if($admin==1){echo "&nbsp&nbsp&nbsp&nbsp&nbsp<a href='adminMain.php'>ADMIN HOME</a>";}
-		if($admin==0 && $user==0){echo "<a href='LogIn.php'>Log In/Register</a>";}
+		if(isset($_SESSION['user']) && $_SESSION['user']==1){echo "<a href='profile.php'>Account Info..</a>";}
+		if(isset($_SESSION['admin']) && $_SESSION['admin']==1){echo "&nbsp&nbsp&nbsp&nbsp&nbsp<a href='adminMain.php'>ADMIN HOME</a>";}
+		if(isset($_SESSION['admin'])==FALSE && isset($_SESSION['user'])==FALSE){
+			echo "<a href='LogIn.php'>Log In/Register</a>";
+		}
+		else{echo "<br/><a href='main.php?sdestroy' style='font-size:10;'>Log out</a>";}
 		?>
 	</div>
 <?php
-$link = mysql_connect('localhost:3306', 'root', '');
+$link = mysql_connect($dbLocalhost, $dbUser, $dbPw);
 if (!$link) {die('Not connected : ' . mysql_error());}
-$db_selected = mysql_select_db('ocs', $link);
+$db_selected = mysql_select_db($dbDb, $link);
 ?>	

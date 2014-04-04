@@ -1,6 +1,7 @@
 <?php
 $title= "Main";
 $activeIndex=1;
+include "methods.php";
 include "header.php";
 ?>
 <?php

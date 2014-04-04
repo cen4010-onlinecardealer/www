@@ -1,6 +1,7 @@
 <?php
 $title= "Profile";
 $activeIndex=0;
+include "methods.php";
 include "header.php";
 ?>
 

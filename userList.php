@@ -1,6 +1,7 @@
 <?php
 $title= "User List";
 $activeIndex=0;
+include "methods.php";
 include "header.php";
 ?>
 
