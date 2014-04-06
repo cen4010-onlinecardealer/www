@@ -3,13 +3,13 @@ if(0){//DB Connection
 	$dbLocalhost="localhost:3306";
 	$dbUser="root";
 	$dbPw="";
-	$dbDb="ocs";
+	$dbDb="ocsv2";
 }
 else{//Linux
 	$dbLocalhost="localhost";
 	$dbUser="root";
 	$dbPw="jhweb123";
-	$dbDb="ocs";
+	$dbDb="ocsV2";
 }
 session_start();
 if(isset($_POST['login'])){
