@@ -5,6 +5,15 @@ include "methods.php";
 include "header.php";
 ?>
 
+
+<?php 
+
+if(isset($_POST['create'])){
+
+	echo $error;
+}
+?>
+
 <br/>
 <br/>
 <br/>
