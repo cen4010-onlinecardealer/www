@@ -1,8 +1,8 @@
 <?php
-if(0){//DB Connection
+if(1){//DB Connection
 	$dbLocalhost="localhost:3306";
 	$dbUser="root";
-	$dbPw="";
+	$dbPw="houseauto868";
 	$dbDb="ocsv2";
 }
 else{//Linux
