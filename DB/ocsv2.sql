@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 06, 2014 at 09:23 PM
+-- Generation Time: Apr 09, 2014 at 03:37 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -58,7 +58,17 @@ CREATE TABLE IF NOT EXISTS `car` (
   `status_id` int(11) NOT NULL DEFAULT '0',
   `picture_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`car_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `car`
+--
+
+INSERT INTO `car` (`car_id`, `id_vin`, `make_id`, `model_id`, `year`, `condition_id`, `mileage`, `color`, `color_description`, `comments`, `price`, `status_id`, `picture_id`) VALUES
+(1, 'aaaa11111', 1, 1, 0, 1, 0, 'black', 'the black', 'it''s black', '0', 1, NULL),
+(2, '222333', 2, 1, 2010, 1, 10250, 'RED', NULL, NULL, '100251', 1, NULL),
+(3, 'M222-2244-5555-666', 1, 1, 2014, 1, 80000, 'red', 'the red car', 'the car is red', '251', 1, 0),
+(4, 'theOtherVin', 0, 0, 3015, 0, 0, '', '', '', '0', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -82,7 +92,16 @@ CREATE TABLE IF NOT EXISTS `car_condition` (
   `id_car_condition` int(11) NOT NULL AUTO_INCREMENT,
   `car_condition_name` varchar(250) NOT NULL,
   PRIMARY KEY (`id_car_condition`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `car_condition`
+--
+
+INSERT INTO `car_condition` (`id_car_condition`, `car_condition_name`) VALUES
+(1, 'new'),
+(2, 'used'),
+(3, 'refurbished');
 
 -- --------------------------------------------------------
 
@@ -106,7 +125,15 @@ CREATE TABLE IF NOT EXISTS `car_status` (
   `id_car_status` int(11) NOT NULL AUTO_INCREMENT,
   `car_status_desc` varchar(250) NOT NULL,
   PRIMARY KEY (`id_car_status`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `car_status`
+--
+
+INSERT INTO `car_status` (`id_car_status`, `car_status_desc`) VALUES
+(1, 'available'),
+(2, 'sold');
 
 -- --------------------------------------------------------
 
@@ -132,7 +159,24 @@ CREATE TABLE IF NOT EXISTS `make_id` (
   `make_id` int(11) NOT NULL AUTO_INCREMENT,
   `make` varchar(250) NOT NULL,
   PRIMARY KEY (`make_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `make_id`
+--
+
+INSERT INTO `make_id` (`make_id`, `make`) VALUES
+(1, 'Acura'),
+(2, 'BMW'),
+(3, 'Cadillac'),
+(4, 'Dodge'),
+(5, 'Ferrari'),
+(6, 'Ford'),
+(7, 'Honda'),
+(8, 'Hunday'),
+(9, 'Jaguar'),
+(10, 'Nissan'),
+(11, 'Toyota');
 
 -- --------------------------------------------------------
 
@@ -145,7 +189,35 @@ CREATE TABLE IF NOT EXISTS `model_id` (
   `make_id` int(11) NOT NULL,
   `model` varchar(250) NOT NULL,
   PRIMARY KEY (`model_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+--
+-- Dumping data for table `model_id`
+--
+
+INSERT INTO `model_id` (`model_id`, `make_id`, `model`) VALUES
+(1, 1, 'S100'),
+(2, 1, 'S150'),
+(3, 2, 'S200'),
+(4, 2, 'S250'),
+(5, 3, 'S300'),
+(6, 3, 'S350'),
+(7, 4, 'S400'),
+(8, 4, 'S450'),
+(9, 5, 'S500'),
+(10, 5, 'S550'),
+(11, 6, 'S600'),
+(12, 6, 'S650'),
+(13, 7, 'S700'),
+(14, 7, 'S750'),
+(15, 8, 'S800'),
+(16, 8, 'S850'),
+(17, 9, 'S900'),
+(18, 9, 'S950'),
+(19, 10, 'Altima'),
+(20, 10, 'Sentra'),
+(21, 11, 'Corolla'),
+(22, 11, 'Camry');
 
 -- --------------------------------------------------------
 
@@ -196,14 +268,20 @@ CREATE TABLE IF NOT EXISTS `user` (
   `shippingAddressId` int(11) NOT NULL DEFAULT '0',
   `logged_in` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`uid`, `userType`, `username`, `password`, `phone`, `email`, `firstName`, `lastName`, `creditCardId`, `billingAddressId`, `shippingAddressId`, `logged_in`) VALUES
-(1, 1, 'admin', 'admin1', NULL, NULL, NULL, NULL, 0, 0, 0, b'0');
+(1, 1, 'admin', 'admin1', NULL, NULL, NULL, NULL, 0, 0, 0, b'0'),
+(3, 1, 'admin2', 'a', 'e', 'd', 'b', 'c', 0, 0, 0, b'0'),
+(4, 2, 'r', '', '', '', '', '', 0, 0, 0, b'0'),
+(5, 2, 'user', 'user', '', '', '', '', 0, 0, 0, b'0'),
+(7, 2, 'roge', 'roge', NULL, 'roge', 'roge', 'roge', 0, 0, 0, b'0'),
+(8, 2, 'e', '', NULL, '', '', '', 0, 0, 0, b'0'),
+(9, 2, 'john', 'smith', '305-230-2524', 'smithJohn@hotmail.com', 'John', 'Smith', 0, 0, 0, b'0');
 
 -- --------------------------------------------------------
 
@@ -215,7 +293,15 @@ CREATE TABLE IF NOT EXISTS `user_type` (
   `id_user_type` int(11) NOT NULL AUTO_INCREMENT,
   `user_name_type` varchar(250) NOT NULL,
   PRIMARY KEY (`id_user_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `user_type`
+--
+
+INSERT INTO `user_type` (`id_user_type`, `user_name_type`) VALUES
+(1, 'ADMIN'),
+(2, 'USER');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
