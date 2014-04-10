@@ -43,7 +43,7 @@
 		?>
 	</div>
 <?php
-$link = mysql_connect($dbLocalhost, $dbUser, $dbPw, $dbDb);
+$link = mysql_connect($dbLocalhost, $dbUser, $dbPw);
 if (!$link) {die('Not connected : ' . mysql_error());}
 $db_selected = mysql_select_db($dbDb, $link);
 ?>	

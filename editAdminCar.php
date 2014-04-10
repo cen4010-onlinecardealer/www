@@ -104,7 +104,7 @@ else{die('No Car Selected');}
 				<tr>
 					<td valign='top' width='50%'>
 						<fieldset class='divFormat'><legend>VIN*</legend>
-						<input type='text' name='id_vin' style='width:100%' value='<?php echo $id_vin;?>'/>
+						<input type='text' name='id_vin' style='width:100%' value='<?php echo htmlentities($id_vin, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 					<td valign='top'></td>
@@ -130,7 +130,7 @@ else{die('No Car Selected');}
 				<tr>
 					<td valign='top' width='50%'>
 						<fieldset class='divFormat'><legend>Year(yyyy):</legend>
-						<input type='text' name='year' style='width:100%' onkeypress="return isNumberKey(event)" value='<?php echo $year;?>'/>
+						<input type='text' name='year' style='width:100%' onkeypress="return isNumberKey(event)" value='<?php echo htmlentities($year, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 					<td valign='top'>
@@ -145,7 +145,7 @@ else{die('No Car Selected');}
 				<tr>
 					<td valign='top' width='50%'>
 						<fieldset class='divFormat'><legend>Miles:</legend>
-						<input type='text' name='mileage' style='width:100%' onkeypress="return isNumberKey(event)" value='<?php echo $mileage;?>'/>
+						<input type='text' name='mileage' style='width:100%' onkeypress="return isNumberKey(event)" value='<?php echo htmlentities($mileage, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 					<td valign='top'></td>
@@ -153,24 +153,24 @@ else{die('No Car Selected');}
 				<tr>
 					<td valign='top' width='50%'>
 						<fieldset class='divFormat'><legend>Color:</legend>
-						<input type='text' name='color' style='width:100%' value='<?php echo $color;?>'/>
+						<input type='text' name='color' style='width:100%' value='<?php echo htmlentities($color, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 					<td valign='top'>
 						<fieldset class='divFormat'><legend>Color Description:</legend>
-						<input type='text' name='color_description' style='width:100%' value='<?php echo $color_description;?>'/>
+						<input type='text' name='color_description' style='width:100%' value='<?php echo htmlentities($color_description, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 				</tr>
 				<tr>
 					<td valign='top' width='50%'>
 						<fieldset class='divFormat'><legend>Comments:</legend>
-						<input type='text' name='comments' style='width:100%' value='<?php echo $comments;?>'/>
+						<input type='text' name='comments' style='width:100%' value='<?php echo htmlentities($comments, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 					<td valign='top'>
 						<fieldset class='divFormat'><legend>Price($):</legend>
-						<input type='text' name='price' style='width:100%' value='<?php echo $price;?>'/>
+						<input type='text' name='price' style='width:100%' value='<?php echo htmlentities($price, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 				</tr>

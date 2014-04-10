@@ -1,6 +1,13 @@
 <?php
-if(1){//DB Connection
+$userTeam=0;
+if($userTeam==1){//Ariel
 	$dbLocalhost="localhost:3306";
+	$dbUser="root";
+	$dbPw="";
+	$dbDb="ocsv2";
+}
+elseif ($userTeam==2){//Rogelio
+	$dbLocalhost="localhost";
 	$dbUser="root";
 	$dbPw="houseauto868";
 	$dbDb="ocsv2";

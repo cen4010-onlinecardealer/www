@@ -91,24 +91,24 @@ else{die('No User Selected');}
 				<tr>
 					<td valign='top' width='60%'>
 						<fieldset class='divFormat'><legend>Last Name:</legend>
-						<input type='text' name='lastName' style='width:100%' value='<?php echo $lastName;?>'/>
+						<input type='text' name='lastName' style='width:100%' value='<?php echo htmlentities($lastName, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 					<td valign='top'>
 						<fieldset class='divFormat'><legend>First Name:</legend>
-						<input type='text' name='firstName' style='width:100%' value='<?php echo $firstName;?>'/>
+						<input type='text' name='firstName' style='width:100%' value='<?php echo htmlentities($firstName, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 				</tr>
 				<tr>
 					<td valign='top'>
 						<fieldset class='divFormat'><legend>Email</legend>
-						<input type='text' name='email' style='width:100%' value='<?php echo $email;?>'/>
+						<input type='text' name='email' style='width:100%' value='<?php echo htmlentities($email, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 					<td valign='top'>
 						<fieldset class='divFormat'><legend>Phone</legend>
-						<input type='text' name='phone' value='<?php echo $phone;?>'/>
+						<input type='text' name='phone' value='<?php echo htmlentities($phone, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 				</tr>
@@ -116,13 +116,13 @@ else{die('No User Selected');}
 					<td valign='top'>
 						<br/>
 						<fieldset class='divFormat'><legend>username*</legend>
-						<input type='text' name='username' style='width:100%' value='<?php echo $username;?>'/>
+						<input type='text' name='username' style='width:100%' value='<?php echo htmlentities($username, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 					<td valign='top'>
 						<br/>
 						<fieldset class='divFormat'><legend>password*</legend>
-						<input type='text' name='password' value='<?php echo $password;?>'/>
+						<input type='text' name='password' value='<?php echo htmlentities($password, ENT_QUOTES);?>'/>
 						</fieldset>
 					</td>
 				</tr>

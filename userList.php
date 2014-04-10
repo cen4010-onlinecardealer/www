@@ -31,7 +31,8 @@ if(isset($_POST['delUser'])){
 		<td colspan='9'><hr class='tdhead'/></td>
 	</tr>
 	<?php
-		$userList=mysql_query("SELECT uid, lastName, firstName, username, userType FROM user
+		$userList=mysql_query("SELECT uid, lastName, firstName, username, userType, user_name_type FROM user
+								INNER JOIN user_type ON user.userType = user_type.id_user_type
 								ORDER BY lastName");
 		$line=0;
 		while($userListDB=mysql_fetch_array($userList)){
@@ -40,7 +41,7 @@ if(isset($_POST['delUser'])){
 			}
 			$line++;
 			echo "<tr><td>".$line."</td><td>".$userListDB['lastName']."</td><td>".$userListDB['firstName']."</td>
-					<td>".$userListDB['username']."</td><td>".$userListDB['userType']."</td>
+					<td>".$userListDB['username']."</td><td>".$userListDB['user_name_type']."</td>
 					<td><Form action='editAdminUser.php' method='Post' name='toEditUser' style='padding:0; margin:0;'>
 						<input type='Submit' name='selectUser' value='Edit'/>
 						<input type='hidden' name='userID' value='".$userListDB['uid']."'/>

@@ -48,21 +48,21 @@ include "header.php";
 				<tr>
 					<td valign='top'>
 						<fieldset class='divFormat'><legend>username<span style='color:red'>*</span></legend>	
-							<input type='text' name='username' style='width:100%' value='<?php if(isset($_POST['add'])){echo $_POST['username'];}?>'/>
+							<input type='text' name='username' style='width:100%' value='<?php if(isset($_POST['add'])){echo htmlentities($_POST['username'], ENT_QUOTES);}?>'/>
 						</fieldset>
 					</td>
 				</tr>
 				<tr>
 					<td valign='top'>
 						<fieldset class='divFormat'><legend>Password<span style='color:red'>*</span></legend>	
-							<input type='text' name='password' style='width:100%' value='<?php if(isset($_POST['add'])){echo $_POST['password'];}?>'/>
+							<input type='text' name='password' style='width:100%' value='<?php if(isset($_POST['add'])){echo htmlentities($_POST['password'], ENT_QUOTES);}?>'/>
 						</fieldset>
 					</td>
 				</tr>
 				<tr>
 					<td valign='top'>
 						<fieldset class='divFormat'><legend>Confirm Password<span style='color:red'>*</span></legend>	
-							<input type='text' name='confPassword' style='width:100%' value='<?php if(isset($_POST['add'])){echo $_POST['confPassword'];}?>'/>
+							<input type='text' name='confPassword' style='width:100%' value='<?php if(isset($_POST['add'])){echo htmlentities($_POST['confPassword'], ENT_QUOTES);}?>'/>
 						</fieldset>
 					</td>
 				</tr>
@@ -70,25 +70,25 @@ include "header.php";
 					<td valign='top' width='60%'>
 						<br/>
 						<fieldset class='divFormat'><legend>First Name:</legend>	
-							<input type='text' name='firstName' style='width:100%' value='<?php if(isset($_POST['add'])){echo $_POST['firstName'];}?>'/>
+							<input type='text' name='firstName' style='width:100%' value='<?php if(isset($_POST['add'])){echo htmlentities($_POST['firstName'], ENT_QUOTES);}?>'/>
 						</fieldset>
 					</td>
 					<td valign='top'>
 						<br/>
 						<fieldset class='divFormat'><legend>Last Name:</legend>	
-							<input type='text' name='lastName' style='width:100%' value='<?php if(isset($_POST['add'])){echo $_POST['lastName'];}?>'/>
+							<input type='text' name='lastName' style='width:100%' value='<?php if(isset($_POST['add'])){echo htmlentities($_POST['lastName'], ENT_QUOTES);}?>'/>
 						</fieldset>
 					</td>
 				</tr>
 				<tr>
 					<td valign='top'>
 						<fieldset class='divFormat'><legend>email:</legend>	
-							<input type='text' name='email' style='width:100%' value='<?php if(isset($_POST['add'])){echo $_POST['email'];}?>'/>
+							<input type='text' name='email' style='width:100%' value='<?php if(isset($_POST['add'])){echo htmlentities($_POST['email'], ENT_QUOTES);}?>'/>
 						</fieldset>
 					</td>
 					<td>
 						<fieldset class='divFormat'><legend>phone:</legend>	
-							<input type='text' name='phone' style='width:100%' value='<?php if(isset($_POST['add'])){echo $_POST['phone'];}?>'/>
+							<input type='text' name='phone' style='width:100%' value='<?php if(isset($_POST['add'])){echo htmlentities($_POST['phone'], ENT_QUOTES);}?>'/>
 						</fieldset>
 					</td>
 				</tr>

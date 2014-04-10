@@ -32,7 +32,10 @@ if(isset($_POST['delCar'])){
 		<td colspan='10'><hr class='tdhead'/></td>
 	</tr>
 	<?php
-		$carList=mysql_query("SELECT car_id, id_vin, make_id, model_id, year, color, price, status_id FROM car
+		$carList=mysql_query("SELECT car_id, id_vin, car.make_id, car.model_id, year, color, price, status_id, make, model, car_status_desc FROM car
+								INNER JOIN make_id ON car.make_id = make_id.make_id
+								INNER JOIN model_id ON car.model_id = model_id.model_id
+								INNER JOIN car_status ON car.status_id = car_status.id_car_status
 								ORDER BY status_id, make_id");
 		$line=0;
 		while($carListDB=mysql_fetch_array($carList)){
@@ -41,8 +44,8 @@ if(isset($_POST['delCar'])){
 			}
 			$line++;
 			echo "<tr>
-					<td>".$line."</td><td>".$carListDB['id_vin']."</td><td>".$carListDB['status_id']."</td><td>".$carListDB['make_id']."</td>
-					<td>".$carListDB['model_id']."</td><td>".$carListDB['year']."</td><td>".$carListDB['color']."</td><td>".$carListDB['price']."</td>
+					<td>".$line."</td><td>".$carListDB['id_vin']."</td><td>".$carListDB['car_status_desc']."</td><td>".$carListDB['make']."</td>
+					<td>".$carListDB['model']."</td><td>".$carListDB['year']."</td><td>".$carListDB['color']."</td><td>".$carListDB['price']."</td>
 					<td><Form action='editAdminCar.php' method='Post' name='toEditCar' style='padding:0; margin:0;'>
 						<input type='Submit' name='selectCar' value='".$carListDB['car_id']."'/>
 						<input type='hidden' name='carID' value='".$carListDB['car_id']."'/>
