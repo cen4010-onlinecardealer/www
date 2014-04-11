@@ -4,28 +4,35 @@ $activeIndex=1;
 include "methods.php";
 include "header.php";
 ?>
-<?php
-?>
 
-<Form name='' method='POST' target='searchResults' action='list_cars.php'>
+
+<Form name='' method='POST' target='searchResults' action='Search.php'>
 <table border='0'name='orgMain' style='margin-left:auto;margin-right:auto;width:90%;font-size:12'>
 	<tr>
 		<td width='1%'></td>
-		<td colspan='5'>Search Cars</td>
+		<h1>Search your furute vehicle</h1>
+		
 		<td width='1%'></td>
 	</tr>
 	<tr>
 		<td></td>
-		<td style='width:8%'>Make</td>
+		<td style='width:8%'>Year</td>
+		<td>
+			<input type='text' name='year'/>
+		</td>
+		<td>OR</td>
+		<td align='right' style='width:15%'>VIN</td>
+		<td>
+			<input type='text' name='id_vin'/>
+		</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Make</td>
 		<td>
 			<input type='text' name='make'/>
 		</td>
-		<td>OR</td>
-		<td align='right' style='width:15%'>ID</td>
-		<td>
-			<input type='text' name='carID'/>
-		</td>
-		<td></td>
 	</tr>
 	<tr>
 		<td></td>
@@ -36,26 +43,26 @@ include "header.php";
 	</tr>
 	<tr>
 		<td></td>
-		<td>Year</td>
+		<td>Color</td>
 		<td>
-			<input type='text' name='year'/>
+			<input type='text' name='color'/>
 		</td>
 	</tr>
 	<tr>
 		<td></td>
 		<td>Price</td>
-		<td>
+		<td> 
 			<select name='price'>
-				<option value=''>$500 or less</option>
-				<option value=''>$2,000 or less</option>
-				<option value=''>$5,000 or less</option>
-				<option value=''>$10,000 or less</option>
-				<option value='' selected='selected'>$20,000 or less</option>
-				<option value=''>$30,000 or less</option>
-				<option value=''>$50,000 or less</option>
-				<option value=''>$50,000 or more</option>
+				<option value='500'>$500 or less</option>
+				<option value='2000'>$2,000 or less</option>
+				<option value='5000'>$5,000 or less</option>
+				<option value='10000'>$10,000 or less</option>
+				<option value='20000' selected='selected'>$20,000 or less</option>
+				<option value='30000'>$30,000 or less</option>
+				<option value='50000'>$50,000 or less</option>
+				<option value='1000000'>$50,000 or more</option>
 			</select>
-		</td>
+		</td> 
 		<td colspan='3' align='right'>
 			<input type='Submit' name='search' value='Search'/>
 		</td>
@@ -63,12 +70,13 @@ include "header.php";
 	<tr style='height:500'>
 		<td></td>
 		<td colspan='5'>
-			<iframe src='list_cars.php' width='100%' height='500' name='searchResults' frameborder='1'></iframe>
+			<iframe src='Search.php' width='100%' height='500' name='searchResults' frameborder='1'></iframe>
 		</td>
 		<td></td>
 	</tr>
 </table>
 </Form>
+
 
 
 

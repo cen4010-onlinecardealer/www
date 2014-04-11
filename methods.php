@@ -1,15 +1,9 @@
 <?php
-$userTeam=0;
+$userTeam=1;
 if($userTeam==1){//Ariel
 	$dbLocalhost="localhost:3306";
 	$dbUser="root";
 	$dbPw="";
-	$dbDb="ocsv2";
-}
-elseif ($userTeam==2){//Rogelio
-	$dbLocalhost="localhost";
-	$dbUser="root";
-	$dbPw="houseauto868";
 	$dbDb="ocsv2";
 }
 else{//Linux
@@ -20,8 +14,9 @@ else{//Linux
 }
 session_start();
 
-$_SESSION['userType'] = 0;
 
+
+//From Log in button @ LogIn.php
 if(isset($_POST['login'])){
 	
 	//Initiate connection to the database
@@ -32,10 +27,7 @@ if(isset($_POST['login'])){
 	$sessionUser = mysql_query("SELECT * FROM user WHERE username ='".$_POST['username']."'");
 
 	$sessionUserDB= mysql_fetch_array($sessionUser);
-	/*echo $sessionUserDB['username'];
-	echo $sessionUserDB['password'];
-	echo $_POST['username'];
-	echo $_POST['passwordLogin'];*/
+
 	
 	if($_POST['username']==$sessionUserDB['username'] && $_POST['passwordLogin']==$sessionUserDB['password'])
 	{
@@ -60,21 +52,81 @@ if(isset($_POST['login'])){
 	
 	//Close connection to DB
 	mysql_close($link);
+
 }
 
+//From Create an Account button @ LogIn.php
 if(isset($_POST['create'])){
-//Code to register a new user to the db
 
 	//Initiate connection to the database
 	$link = mysql_connect($dbLocalhost, $dbUser, $dbPw);
 	if (!$link) {die('Not connected : ' . mysql_error());}
 	$db_selected = mysql_select_db($dbDb, $link);
+
+
+
+
+	$firstName = $lastName = $usernameNew = $email = $password = $confPassword = "";
+	$nameErr = $usernameNewErr = $emailErr = $passwordErr = $confPasswordErr = "";
 	
-	$username=str_replace(' ','',$_POST['usernameNew']);
 	
-$checkUser=mysql_query("SELECT username from user
+//Test for Security and validate Registration Form
+
+	//Test last name & name is valid format
+	if (empty($_POST['firstName']) || empty($_POST['lastName']))
+		{$nameErr = "Name and Last Name are required";}
+	else
+		{
+		$firstName = test_input($_POST['firstName']);
+		$lastName = test_input($_POST['lastName']);
+		// check if name only contains letters and white spaces
+		if (!preg_match("/^[a-zA-Z ]*$/",$firstName) || !preg_match("/^[a-zA-Z ]*$/",$lastName))
+		  {
+			$nameErr = "Only letters and white space allowed"; 
+		  }
+		}
+	
+	//Test email is valid format
+	if (empty($_POST['email']))
+		{$emailErr = "Email is required";}
+	else
+	{
+		$email = test_input($_POST['email']);
+		// check if e-mail address syntax is valid
+		if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email))
+		  {
+			$emailErr = "Invalid email format"; 
+		  }
+	}
+	
+	//
+	if (empty($_POST['usernameNew']))
+		{$usernameNewErr = "User name is required";}
+	else
+		{
+			$usernameNew = test_input($_POST['usernameNew']);
+			// check if new user name is valid and not in the database already
+			if (!preg_match("/^[a-zA-Z0-9 ]*$/",$usernameNew))
+			  {
+				$usernameNewErr = "User name must contain letter and numbers ONLY,
+									please enter another one"; 
+				
+			  }
+			
+			$usernameQuery = mysql_query("SELECT username FROM user
+										WHERE userType=2 AND username=".$usernameNew."");
+			$userAvailabilityDB=mysql_fetch_array($usernameQuery);									
+		}	
+		
+	
+	//Code to register a new user to the DB
+	
+	
+	//$username=str_replace(' ','',$_POST['usernameNew']);
+	
+	$checkUser=mysql_query("SELECT username from user
 								WHERE username='".$_POST['usernameNew']."'");
-		$checkUserDB=mysql_fetch_array($checkUser);
+	$checkUserDB=mysql_fetch_array($checkUser);
 		
 	if($checkUserDB['username']== $username || $username==''){$error = "Error: User could not be added [username already in use]";}	
 	else{
@@ -91,14 +143,13 @@ $checkUser=mysql_query("SELECT username from user
 				//TODO: Send the user to Log in page with POST variables to Log in								
 			}
 			else {$error = "Error: User could not be added [passwords does not match]";}	
-			
-			
 		}
 		
-	
 	//Close connection to DB
 	mysql_close($link);
 }
+
+
 
 if(isset($_GET['sdestroy'])){
 	echo "DESTROY";
