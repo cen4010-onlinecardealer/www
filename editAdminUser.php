@@ -130,8 +130,15 @@ else{die('No User Selected');}
 					<td valign='top'>
 						<fieldset class='divFormat'><legend>User Type</legend>
 						<select name='userType'/>
-							<option value='1' <?php if($userType==1){echo "selected='selected'";}?>>1</option>
-							<option value='2' <?php if($userType==2){echo "selected='selected'";}?>>2</option>
+							<?php 
+								$uType=mysql_query("SELECT id_user_type, user_name_type from user_type
+														ORDER BY id_user_type");
+								while($uTypeDB=mysql_fetch_array($uType)){
+									echo "<option value='".$uTypeDB['id_user_type']."'";
+											if($uTypeDB['id_user_type']==$userType){echo "selected='selected'";}
+									echo ">".$uTypeDB['user_name_type']."</option>";
+								}
+							?>
 						</select>
 						</fieldset>
 					</td>

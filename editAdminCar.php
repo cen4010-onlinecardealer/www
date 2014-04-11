@@ -10,7 +10,7 @@ include "calendar.php";
 if (!$db_selected) {
 		die ('Can\'t use DB : ' . mysql_error());
 	}
-echo $_POST['carID'];
+
 if(isset($_POST['carID'])){
 	if($_POST['carID']==0){
 		$id_vin="";
@@ -99,7 +99,7 @@ else{die('No Car Selected');}
 		<td width='3%'></td>
 		<td><Form name='editCarInfo' method='post' action='editAdminCar.php'>
 			<input type='hidden' name='carID' value='<?php echo $_POST['carID'];?>' />
-			<fieldset class='divFormatHeader'><legend>Car Details</legend>
+			<fieldset class='divFormatHeader'><legend>Car Details (ID:<?php echo $_POST['carID'];?>)</legend>
 			<table border='0' width='100%' name='orgCarDetails'>
 				<tr>
 					<td valign='top' width='50%'>
@@ -113,8 +113,15 @@ else{die('No Car Selected');}
 					<td valign='top' width='50%'>
 						<fieldset class='divFormat'><legend>Make:</legend>
 						<select name='make_id'>
-							<option value='0' <?php if($make_id=='0')echo "selected='selected'";?>>Select Make</option>
-							<option value='1' <?php if($make_id=='1')echo "selected='selected'";?>>1</option>
+							<?php 
+								$makeQ=mysql_query("SELECT make_id, make from make_id
+														ORDER BY make_id");
+								while($makeQDB=mysql_fetch_array($makeQ)){
+									echo "<option value='".$makeQDB['make_id']."'";
+											if($makeQDB['make_id']==$make_id){echo "selected='selected'";}
+									echo ">".$makeQDB['make']."</option>";
+								}
+							?>
 						</select>
 						</fieldset>
 					</td>
@@ -136,8 +143,15 @@ else{die('No Car Selected');}
 					<td valign='top'>
 						<fieldset class='divFormat'><legend>Condition:</legend>
 						<select name='condition_id'>
-							<option value='0' <?php if($condition_id=='0')echo "selected='selected'";?>>Select Condition</option>
-							<option value='1' <?php if($condition_id=='1')echo "selected='selected'";?>>1</option>
+							<?php 
+								$carCondition=mysql_query("SELECT id_car_condition, car_condition_name from car_condition
+														ORDER BY id_car_condition");
+								while($carConditionDB=mysql_fetch_array($carCondition)){
+									echo "<option value='".$carConditionDB['id_car_condition']."'";
+											if($carConditionDB['id_car_condition']==$condition_id){echo "selected='selected'";}
+									echo ">".$carConditionDB['car_condition_name']."</option>";
+								}
+							?>
 						</select>
 						</fieldset>
 					</td>
@@ -178,8 +192,15 @@ else{die('No Car Selected');}
 					<td valign='top' width='50%'>
 						<fieldset class='divFormat'><legend>Status:</legend>
 						<select name='status_id'>
-							<option value='0' <?php if($status_id=='0')echo "selected='selected'";?>>Select Condition</option>
-							<option value='1' <?php if($status_id=='1')echo "selected='selected'";?>>1</option>
+							<?php 
+								$statusID=mysql_query("SELECT id_car_status, car_status_desc from car_status
+														ORDER BY id_car_status");
+								while($statusIDDB=mysql_fetch_array($statusID)){
+									echo "<option value='".$statusIDDB['id_car_status']."'";
+											if($statusIDDB['id_car_status']==$status_id){echo "selected='selected'";}
+									echo ">".$statusIDDB['car_status_desc']."</option>";
+								}
+							?>
 						</select>
 						</fieldset>
 					</td>
