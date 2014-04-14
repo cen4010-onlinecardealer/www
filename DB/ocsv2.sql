@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 09, 2014 at 03:37 AM
+-- Generation Time: Apr 14, 2014 at 08:51 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -66,9 +66,9 @@ CREATE TABLE IF NOT EXISTS `car` (
 
 INSERT INTO `car` (`car_id`, `id_vin`, `make_id`, `model_id`, `year`, `condition_id`, `mileage`, `color`, `color_description`, `comments`, `price`, `status_id`, `picture_id`) VALUES
 (1, 'aaaa11111', 1, 1, 0, 1, 0, 'black', 'the black', 'it''s black', '0', 1, NULL),
-(2, '222333', 2, 1, 2010, 1, 10250, 'RED', NULL, NULL, '100251', 1, NULL),
-(3, 'M222-2244-5555-666', 1, 1, 2014, 1, 80000, 'red', 'the red car', 'the car is red', '251', 1, 0),
-(4, 'theOtherVin', 0, 0, 3015, 0, 0, '', '', '', '0', 0, 0);
+(2, '222333', 1, 1, 2010, 1, 10250, 'RED', '', '', '100251', 1, NULL),
+(3, 'M222-2244-5555-666', 3, 1, 2014, 2, 80000, 'red', 'the red car', 'the car is red', '251', 2, 0),
+(4, 'theOtherVin', 1, 1, 3015, 1, 0, '', '', '', '0', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -111,6 +111,7 @@ INSERT INTO `car_condition` (`id_car_condition`, `car_condition_name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `car_pictures` (
   `id_car_pictures` int(11) NOT NULL AUTO_INCREMENT,
+  `car_id` int(11) NOT NULL DEFAULT '0',
   `pictures_path` varchar(250) NOT NULL,
   PRIMARY KEY (`id_car_pictures`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -280,7 +281,7 @@ INSERT INTO `user` (`uid`, `userType`, `username`, `password`, `phone`, `email`,
 (4, 2, 'r', '', '', '', '', '', 0, 0, 0, b'0'),
 (5, 2, 'user', 'user', '', '', '', '', 0, 0, 0, b'0'),
 (7, 2, 'roge', 'roge', NULL, 'roge', 'roge', 'roge', 0, 0, 0, b'0'),
-(8, 2, 'e', '', NULL, '', '', '', 0, 0, 0, b'0'),
+(8, 2, 'e', '', '', '', '', '', 0, 0, 0, b'0'),
 (9, 2, 'john', 'smith', '305-230-2524', 'smithJohn@hotmail.com', 'John', 'Smith', 0, 0, 0, b'0');
 
 -- --------------------------------------------------------
