@@ -30,6 +30,7 @@
 
 						
 						$carPriceMax = intval($_POST['price']);  
+												
 //Scenario 1 - All search fields and >=50000
 												
 								if( ($_POST['year'] != '') && ($_POST['make'] != '') && ($_POST['model'] != '') && ($carPriceMax >= 50000)){
@@ -188,7 +189,7 @@ $carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, pri
 															INNER JOIN ocsv2.model_id ON car.model_id = model_id.model_id
 															INNER JOIN ocsv2.car_condition ON car.condition_id = car_condition.id_car_condition
 															WHERE status_id=1 ORDER BY price");
-}
+}//End of search
 					
 						$line = 0;
 						//$buyButton = "<button type="button" class="btn btn-primary btn-lg btn-block">Buy</button>";

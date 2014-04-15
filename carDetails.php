@@ -22,13 +22,6 @@ include "header.php";
 	{
 		echo "Request method not supported. Please user our main page";
 	}
-	//var_dump($_POST['id']);
-	/*if(isset($_POST['carDetails']))
-		{
-			echo "<img src='' alt='No Image Available' class='img-rounded'/>";
-			echo "<br/><div align='right'><font size='1'><a href='#'>Add Img...</a></font></div>";
-		}
-	else{echo "Request method not supported";}*/
 	
 	$currentCar=mysql_query("SELECT *, make, model, car_condition_name FROM ocsv2.car
 									INNER JOIN make_id ON car.make_id = make_id.make_id
@@ -49,11 +42,11 @@ include "header.php";
 
 <html>
 <body>
-	<link href = "css/bootstrap.min.css" rel = "stylesheet">
-	<link rel="stylesheet" href="style.css" type="text/css" />
-	<table border='0' width='100%' name='carDetailsTable'>
+	<link href = "css/bootstrap.min.css" rel = "stylesheet"/>
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+	<table  width='100%' name='carDetailsTable'>
 		<th>
-			<td colspan='5' align='center'><h3 class = "panel-heading">Car Details</h3></td>
+			<td align='center'><h3 class = "bg-info img-rounded text">Car Details</h3></td>
 		</th>
 		
 		<tr>
@@ -63,9 +56,15 @@ include "header.php";
 			
 				<td class="col-sm-14 col-md-7">
 				  <div class="thumbnail">
-					 <img src="<?php echo $_POST['currentCarPics']['pictures_path'];?>" 
+					 <img align = "left" height="500" width="500" class = "img-rounded" src="<?php echo $_POST['currentCarPics']['pictures_path'];?>" 
 					 alt="Generic placeholder thumbnail">
 				  </div>
+				  <div>
+					<br>
+					    &nbsp      
+					</br>
+				  </div>
+					 
 				  <div class="caption">
 					 <h2>
 						<?php echo "".$_POST['currentCarDB']['year']." ".$_POST['currentCarDB']['make']." ".$_POST['currentCarDB']['model']."";?> 
@@ -73,14 +72,7 @@ include "header.php";
 						<a href="#" align = "center" class="btn btn-primary pull-right" role="button">
 						   Buy Now
 						</a> 
-						
-						
 					 </h2>
-					 <p></p>
-					 <p>
-						
-						
-					 </p>
 				  </div>
 			   </td>
 			

@@ -4,7 +4,9 @@ $activeIndex=0;
 include "methods.php";
 include "header.php";
 ?>
+<html>
 
+<link rel="stylesheet" href="style.css" type="text/css"/>
 <table border='0' width='100%' name='orgStudentDemographics'>
 	<tr>
 		<td colspan='5' align='center'><h3>"Profile"</h3></td>
@@ -63,7 +65,7 @@ include "header.php";
 		<td width='3%'></td>
 	</tr>
 </table>
-
+</html>
 
 
 <?php

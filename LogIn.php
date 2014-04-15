@@ -8,9 +8,11 @@ include "header.php";
 
 <?php 
 
+//Display error message from create
 if(isset($_POST['create'])){
-
-	echo $error;
+	echo "<link href = 'css/bootstrap.min.css' rel = 'stylesheet'/>
+		<link rel='stylesheet' href='style.css' type='text/css'/>";
+	echo "<li class='list-group-item list-group-item-info'>".$error."</li>";
 }
 ?>
 
@@ -57,13 +59,13 @@ if(isset($_POST['create'])){
 							<tr>
 								<td>
 									Password <span style='color:red'>*</span><br/>
-									<input type='text' style="width:80%" name='password'/>
+									<input type='password' style="width:80%" name='password'/>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									Confirm Password <span style='color:red'>*</span><br/>
-									<input type='text' style="width:80%" name='confPassword'/>
+									<input type='password' style="width:80%" name='confPassword'/>
 								</td>
 							</tr>
 						</table>
@@ -82,7 +84,7 @@ if(isset($_POST['create'])){
 							<tr>
 									<td>
 										Password <span style='color:red'>*</span><br/>
-										<input type='text' style="width:80%" name='passwordLogin'/>
+										<input type='password' style="width:80%" name='passwordLogin'/>
 									</td>
 							</tr>
 						</table>

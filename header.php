@@ -23,10 +23,6 @@
 			<?php if($activeIndex==2){echo 'id="active"';}?> 
 			href="about.php" class="a">About</a>
 		</td>
-		<td class="menuItem"><a 
-			<?php if($activeIndex==3){echo 'id="active"';}?> 
-			href="#" class="a">a</a>
-		</td>
 	</tr>
 	</table>
 	
@@ -34,7 +30,7 @@
 	<div id="pageCont">
 	<div id="navBar2">
 		<?php
-		if(isset($_SESSION['user']) && $_SESSION['user']==1){echo "<a href='profile.php'>Account Info..</a>";}
+		if(isset($_SESSION['user']) && $_SESSION['user']==1){echo "<a href='profile.php'>User Profile</a>";}
 		if(isset($_SESSION['admin']) && $_SESSION['admin']==1){echo "&nbsp&nbsp&nbsp&nbsp&nbsp<a href='adminMain.php'>ADMIN HOME</a>";}
 		if(isset($_SESSION['admin'])==FALSE && isset($_SESSION['user'])==FALSE){
 			echo "<a href='LogIn.php'>Log In/Register</a>";

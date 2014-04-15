@@ -38,6 +38,10 @@ if(isset($_POST['login'])){
 				}
 			else{
 				$_SESSION['user']=1;
+				echo "
+					<script language='javascript'>
+						window.location.href = 'main.php'
+					</script>";
 			}
 	}
 	
@@ -66,7 +70,7 @@ if(isset($_POST['create'])){
 
 
 
-	$firstName = $lastName = $usernameNew = $email = $password = $confPassword = "";
+	$firstName = $lastName = $usernameNew = $email = "";
 	$nameErr = $usernameNewErr = $emailErr = $passwordErr = $confPasswordErr = "";
 	
 	
@@ -77,8 +81,8 @@ if(isset($_POST['create'])){
 		{$nameErr = "Name and Last Name are required";}
 	else
 		{
-		$firstName = test_input($_POST['firstName']);
-		$lastName = test_input($_POST['lastName']);
+		$firstName = ($_POST['firstName']);
+		$lastName = ($_POST['lastName']);
 		// check if name only contains letters and white spaces
 		if (!preg_match("/^[a-zA-Z ]*$/",$firstName) || !preg_match("/^[a-zA-Z ]*$/",$lastName))
 		  {
@@ -91,7 +95,7 @@ if(isset($_POST['create'])){
 		{$emailErr = "Email is required";}
 	else
 	{
-		$email = test_input($_POST['email']);
+		$email = ($_POST['email']);
 		// check if e-mail address syntax is valid
 		if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email))
 		  {
@@ -104,7 +108,7 @@ if(isset($_POST['create'])){
 		{$usernameNewErr = "User name is required";}
 	else
 		{
-			$usernameNew = test_input($_POST['usernameNew']);
+			$usernameNew = ($_POST['usernameNew']);
 			// check if new user name is valid and not in the database already
 			if (!preg_match("/^[a-zA-Z0-9 ]*$/",$usernameNew))
 			  {
@@ -113,8 +117,9 @@ if(isset($_POST['create'])){
 				
 			  }
 			
-			$usernameQuery = mysql_query("SELECT username FROM user
-										WHERE userType=2 AND username=".$usernameNew."");
+			$usernameQuery = mysql_query("SELECT username FROM ocsv2.user
+										WHERE userType=2 AND username='".$usernameNew."'");
+			
 			$userAvailabilityDB=mysql_fetch_array($usernameQuery);									
 		}	
 		
@@ -122,28 +127,42 @@ if(isset($_POST['create'])){
 	//Code to register a new user to the DB
 	
 	
-	//$username=str_replace(' ','',$_POST['usernameNew']);
 	
-	$checkUser=mysql_query("SELECT username from user
+	
+	$checkUser=mysql_query("SELECT username from ocsv2.user
 								WHERE username='".$_POST['usernameNew']."'");
 	$checkUserDB=mysql_fetch_array($checkUser);
-		
-	if($checkUserDB['username']== $username || $username==''){$error = "Error: User could not be added [username already in use]";}	
+	
+	//Blank username 
+	if(strlen(trim($usernameNew, ' '))==0 ){$error = "Error: User could not be added [username can't be blank]";}	
+	else
+	{
+		if($checkUserDB['username']== $usernameNew ){$error = "Error: User could not be added [username already in use]";}	
 	else{
 	
-			//Check that passwrod and confirm password are the same
+			//Check that password and confirm password are the same
 			if($_POST['password'] == $_POST['confPassword'])
 			{
 				mysql_query("INSERT INTO user (userType, username, password, email, firstName, lastName)
-								VALUES ('2', '".mysql_real_escape_string($username)."', '".mysql_real_escape_string($_POST['password'])."', 
-								'".mysql_real_escape_string($_POST['email'])."', '".mysql_real_escape_string($_POST['firstName'])."', 
-								'".mysql_real_escape_string($_POST['lastName'])."')");
+								VALUES ('2', '".mysql_real_escape_string($usernameNew)."', '".mysql_real_escape_string($_POST['password'])."', 
+								'".mysql_real_escape_string($email)."', '".mysql_real_escape_string($firstName)."', 
+								'".mysql_real_escape_string($lastName)."')");
 								
 				$error = "User Added you can Log in Now";
-				//TODO: Send the user to Log in page with POST variables to Log in								
+				
+				//Enable the session
+				$_SESSION['user']=1;
+				
+				//Send the user to Log in page with POST variables to Log in
+				echo "
+					<script language='javascript'>
+						window.location.href = 'main.php'
+					</script>";
 			}
 			else {$error = "Error: User could not be added [passwords does not match]";}	
 		}
+	}
+	
 		
 	//Close connection to DB
 	mysql_close($link);
