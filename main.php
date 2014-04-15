@@ -20,12 +20,6 @@ include "header.php";
 		<td>
 			<input type='text' name='year'/>
 		</td>
-		<td>OR</td>
-		<td align='right' style='width:15%'>VIN</td>
-		<td>
-			<input type='text' name='id_vin'/>
-		</td>
-		<td></td>
 	</tr>
 	<tr>
 		<td></td>
@@ -43,13 +37,6 @@ include "header.php";
 	</tr>
 	<tr>
 		<td></td>
-		<td>Color</td>
-		<td>
-			<input type='text' name='color'/>
-		</td>
-	</tr>
-	<tr>
-		<td></td>
 		<td>Price</td>
 		<td> 
 			<select name='price'>
@@ -59,8 +46,8 @@ include "header.php";
 				<option value='10000'>$10,000 or less</option>
 				<option value='20000' selected='selected'>$20,000 or less</option>
 				<option value='30000'>$30,000 or less</option>
-				<option value='50000'>$50,000 or less</option>
-				<option value='50001'>$50,000 or more</option>
+				<option value='49999'>$Less than 50,000 </option>
+				<option value='50000'>$50,000 or more</option>
 			</select>
 		</td> 
 		<td colspan='3' align='right'>
