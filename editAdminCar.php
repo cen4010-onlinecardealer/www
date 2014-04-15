@@ -12,6 +12,7 @@ if (!$db_selected) {
 	}
 
 if(isset($_POST['carID'])){
+	$carID=$_POST['carID'];
 	if($_POST['carID']==0){
 		$id_vin="";
 		$make_id="0";
@@ -64,6 +65,7 @@ if(isset($_POST['carID'])){
 		
 		if($_POST['carID']==0){
 			if($id_vin==''){echo "Error: Car could not be added [VIN must not be empty]";}
+			elseif($model_id=='0'){echo "Error: Car could not be added [Make and Model must be selected]";}
 			else{
 				mysql_query("INSERT INTO car (id_vin, make_id, model_id, year, condition_id, mileage, color, color_description, comments,
 												price, status_id, picture_id)
@@ -72,19 +74,43 @@ if(isset($_POST['carID'])){
 											'".mysql_real_escape_string($color)."', '".mysql_real_escape_string($color_description)."',
 											'".mysql_real_escape_string($comments)."', '".mysql_real_escape_string($price)."',
 											'".$status_id."', '".$picture_id."')");
+				$carID= mysql_insert_id(); 
+				echo "Car Added";
 			}
-			echo "Car Added";
+			
+			
+			
 		} 
 		else{
-			mysql_query("UPDATE car SET id_vin='".mysql_real_escape_string($id_vin)."',make_id='".$make_id."',
-										model_id='".$model_id."', year='".$year."', condition_id='".$condition_id."',
-										mileage='".$mileage."', color='".mysql_real_escape_string($color)."', 
-										color_description='".mysql_real_escape_string($color_description)."',
-										comments='".mysql_real_escape_string($comments)."', 
-										price='".mysql_real_escape_string($price)."', 
-										status_id='".$status_id."'
-							WHERE car_id='".$_POST['carID']."'");
-			echo "Car Updated";
+			if($id_vin==''){echo "Error: Car could not be Updated [VIN must not be empty]";}
+			elseif($model_id=='0'){echo "Error: Car could not be Updated [Make and Model must be selected]";}
+			else{
+				mysql_query("UPDATE car SET id_vin='".mysql_real_escape_string($id_vin)."',make_id='".$make_id."',
+											model_id='".$model_id."', year='".$year."', condition_id='".$condition_id."',
+											mileage='".$mileage."', color='".mysql_real_escape_string($color)."', 
+											color_description='".mysql_real_escape_string($color_description)."',
+											comments='".mysql_real_escape_string($comments)."', 
+											price='".mysql_real_escape_string($price)."', 
+											status_id='".$status_id."'
+								WHERE car_id='".$_POST['carID']."'");
+				echo "Car Updated";
+			}
+		}
+	}
+	else{
+		if(isset($_POST['make_id'])){
+			$id_vin=str_replace(' ','',$_POST['id_vin']);
+			$make_id=$_POST['make_id'];
+			$model_id=$_POST['model_id'];
+			$year=$_POST['year'];
+			$condition_id=$_POST['condition_id'];
+			$mileage=$_POST['mileage'];
+			$color=$_POST['color'];
+			$color_description=$_POST['color_description'];
+			$comments=$_POST['comments'];
+			$price=$_POST['price'];
+			$status_id=$_POST['status_id'];
+			//$picture_id=$_POST['picture_id'];	
 		}
 	}
 }
@@ -98,7 +124,7 @@ else{die('No Car Selected');}
 	<tr>
 		<td width='3%'></td>
 		<td><Form name='editCarInfo' method='post' action='editAdminCar.php'>
-			<input type='hidden' name='carID' value='<?php echo $_POST['carID'];?>' />
+			<input type='hidden' name='carID' value='<?php echo $carID;?>' />
 			<fieldset class='divFormatHeader'><legend>Car Details (ID:<?php echo $_POST['carID'];?>)</legend>
 			<table border='0' width='100%' name='orgCarDetails'>
 				<tr>
@@ -111,11 +137,12 @@ else{die('No Car Selected');}
 				</tr>
 				<tr>
 					<td valign='top' width='50%'>
-						<fieldset class='divFormat'><legend>Make:</legend>
+						<fieldset class='divFormat' onchange='this.form.submit()'><legend>Make:</legend>
 						<select name='make_id'>
+							<option value='0' <?php if($make_id=='0')echo "selected='selected'";?>>Select Make</option>
 							<?php 
 								$makeQ=mysql_query("SELECT make_id, make from make_id
-														ORDER BY make_id");
+														ORDER BY make");
 								while($makeQDB=mysql_fetch_array($makeQ)){
 									echo "<option value='".$makeQDB['make_id']."'";
 											if($makeQDB['make_id']==$make_id){echo "selected='selected'";}
@@ -129,7 +156,16 @@ else{die('No Car Selected');}
 						<fieldset class='divFormat'><legend>Model:</legend>
 						<select name='model_id'>
 							<option value='0' <?php if($model_id=='0')echo "selected='selected'";?>>Select Model</option>
-							<option value='1' <?php if($model_id=='1')echo "selected='selected'";?>>1</option>
+							<?php 
+								$modelQ=mysql_query("SELECT model_id, model from model_id
+														WHERE make_id='".$make_id."'
+														ORDER BY model_id");
+								while($modelQDB=mysql_fetch_array($modelQ)){
+									echo "<option value='".$modelQDB['model_id']."'";
+											if($modelQDB['model_id']==$model_id){echo "selected='selected'";}
+									echo ">".$modelQDB['model']."</option>";
+								}
+							?>
 						</select>
 						</fieldset>
 					</td>
