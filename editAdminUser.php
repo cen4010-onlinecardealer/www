@@ -57,8 +57,9 @@ if(isset($_POST['userID'])){
 									VALUES ('".$userType."', '".mysql_real_escape_string($username)."', '".mysql_real_escape_string($password)."', 
 									'".mysql_real_escape_string($phone)."', '".mysql_real_escape_string($email)."', 
 									'".mysql_real_escape_string($firstName)."', '".mysql_real_escape_string($lastName)."')");
+				echo "User Added";
 			}
-			echo "User Added";
+			
 		}
 		else{
 			mysql_query("UPDATE user SET userType='".$_POST['userType']."',username='".mysql_real_escape_string($_POST['username'])."',
@@ -76,7 +77,7 @@ else{die('No User Selected');}
 
 <table border='0' width='100%' name='orgStudentDemographics'>
 	<tr>
-		<td colspan='5' align='center'><h3>"Edit USER"</h3></td>
+		<td colspan='5' align='center'><h3><?php if($_POST['userID']==0){echo "Add USER";}else{echo "Edit USER";}?></h3></td>
 	</tr>
 	<tr>
 		<td width='3%'></td>

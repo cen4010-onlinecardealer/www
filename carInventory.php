@@ -56,11 +56,19 @@ if(isset($_POST['delCar'])){
 					<td>".$line."</td><td>".$carListDB['id_vin']."</td><td>".$carListDB['car_status_desc']."</td><td>".$carListDB['make']."</td>
 					<td>".$carListDB['model']."</td><td>".$carListDB['year']."</td><td>".$carListDB['color']."</td><td>".$carListDB['price']."</td>
 					<td><Form action='editAdminCar.php' method='Post' name='toEditCar' style='padding:0; margin:0;'>
-						<input type='Submit' name='selectCar' value='".$carListDB['car_id']."'/>
+						<input type='Submit' name='selectCar' value='".$carListDB['car_id']."' 
+							style='font-size:10;
+							height:20;width:40;
+							padding:0;
+						'/>
 						<input type='hidden' name='carID' value='".$carListDB['car_id']."'/>
 					</Form></td>
 					<td><Form action='carInventory.php' method='Post' name='toDel' style='padding:0; margin:0;'>
-						<input type='Submit' name='delCar' value='Del'/>
+						<input type='Submit' name='delCar' value='Del' 
+							style='font-size:10;
+							height:20;width:40;
+							padding:0;
+							'/>
 						<input type='hidden' name='carID' value='".$carListDB['car_id']."'/>
 					</Form></td>
 				</tr>";

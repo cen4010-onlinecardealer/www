@@ -43,11 +43,19 @@ if(isset($_POST['delUser'])){
 			echo "<tr><td>".$line."</td><td>".$userListDB['lastName']."</td><td>".$userListDB['firstName']."</td>
 					<td>".$userListDB['username']."</td><td>".$userListDB['user_name_type']."</td>
 					<td><Form action='editAdminUser.php' method='Post' name='toEditUser' style='padding:0; margin:0;'>
-						<input type='Submit' name='selectUser' value='Edit'/>
+						<input type='Submit' name='selectUser' value='Edit'
+							style='font-size:10;
+							height:20;width:40;
+							padding:0;'
+						/>
 						<input type='hidden' name='userID' value='".$userListDB['uid']."'/>
 					</Form></td>
 					<td><Form action='userList.php' method='Post' name='toDel' style='padding:0; margin:0;'>
-						<input type='Submit' name='delUser' value='Del'/>
+						<input type='Submit' name='delUser' value='Del'
+							style='font-size:10;
+							height:20;width:40;
+							padding:0;'
+						/>
 						<input type='hidden' name='userID' value='".$userListDB['uid']."'/>
 					</Form></td>
 				</tr>";
