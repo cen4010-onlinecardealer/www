@@ -169,7 +169,7 @@ else{die('No Car Selected');}
 
 <table border='0' width='70%' align='center' name='orgCarInfo'>
 	<tr>
-		<td colspan='3' align='center'><h3>"Edit Car"</h3></td>
+		<td colspan='3' align='center'><h3><?php if($carID==0){echo "Add Car";}else{echo "Edit Car";}?></h3></td>
 	</tr>
 	<tr>
 		<td width='3%'></td>
