@@ -30,13 +30,13 @@ include "header.php";
 		}
 	else{echo "Request method not supported";}*/
 	
-	$currentCar=mysql_query("SELECT *, make, model, car_condition_name FROM car
+	$currentCar=mysql_query("SELECT *, make, model, car_condition_name FROM ocsv2.car
 									INNER JOIN make_id ON car.make_id = make_id.make_id
 									INNER JOIN model_id ON car.model_id = model_id.model_id
 									INNER JOIN car_condition ON car.condition_id = car_condition.id_car_condition
 									WHERE status_id=1 AND car_id='".$currentCar_id."'");
 														
-	$currentPics=mysql_query("SELECT pictures_path FROM car_pictures
+	$currentPics=mysql_query("SELECT pictures_path FROM ocsv2.car_pictures
 												WHERE car_pictures.car_id='".$currentCar_id."'");													
 														
 	//var_dump($currentCar);
@@ -84,47 +84,49 @@ include "header.php";
 				  </div>
 			   </td>
 			
-			<td valign='top'>
-				<fieldset class='divFormatHeader'><legend>Vehicle Specifications</legend>
-				<table border='0' width='100%' name='orgCarDetails' style='font-size:12'>
-					<tr>
-						<td>
-							<b>Make:</b>
-						</td>
-						<td width='30%'>
-							Honda
-						</td>
-						<td>
-							<b>Color:</b>
-						</td>
-						<td width='30%'>
-							RED
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<b>Model:</b>
-						</td>
-						<td>
-							xls2130
-						</td>
-						<td>
-							<b>Miles:</b>
-						</td>
-						<td>
-							500,000
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<b>Year:</b>
-						</td>
-						<td>
-							2006
-						</td>
-						
-					</tr>
+			<td valign='top' align ="center" >
+				<fieldset class="widget-box center-block"><legend class = "widget-head">Vehicle Specifications</legend>
+				<table class = "table table-hover">
+					<thead>
+							<h4>
+								<?php echo "".$_POST['currentCarDB']['year']." ".$_POST['currentCarDB']['make']." ".$_POST['currentCarDB']['model']."";?>
+							</h4>
+					</thead>
+					<tbody>
+							<tr>
+								<td align ="left" class = "info">
+									<?php echo "Price: $".$_POST['currentCarDB']['price']."";?>
+								</td>
+							</tr>
+							<tr>
+								<td align ="left" class = "info">
+									<?php echo "VIN: ".$_POST['currentCarDB']['id_vin']."";?>
+								</td>
+							</tr>
+							<tr>
+								<td align ="left" class = "info">
+									<?php echo "Condition: ".$_POST['currentCarDB']['car_condition_name']."";?>
+								</td>
+							</tr>
+							<tr>
+								<td align ="left" class = "info">
+									<?php echo "Mileage: ".$_POST['currentCarDB']['mileage']."";?>
+								</td>
+							</tr>
+							<tr>
+								<td align ="left" class = "info">
+									<?php echo "Color : ".$_POST['currentCarDB']['color']." ".$_POST['currentCarDB']['color_description']."";?>
+								</td>
+							</tr>
+							
+							<tr>
+								<td align = "left" class = "info">
+									<?php echo "Comments: ".$_POST['currentCarDB']['comments']."";?>
+								</td>
+							</tr>
+					</tbody>
 				</table>
+				
 			</td>
 			<td width='3%'></td>
 		</tr>
@@ -155,91 +157,67 @@ include "header.php";
 
     -->
     <ol class="carousel-indicators">
-        <li class="" data-slide-to="0" data-target="#myCarousel"></li>
-        <li class="active" data-slide-to="1" data-target="#myCarousel"></li>
-        <li class="" data-slide-to="2" data-target="#myCarousel"></li>
+		
+		<?php
+			//Create the data slides for all the pictures in the DB
+			(int)$counter = 0;
+			$pictureArray ['$counter'] =  $_POST['currentCarPics']['pictures_path'];
+			echo "<li class='active' data-slide-to='".$counter."' data-target='#myCarousel'></li>";
+			while($pictureCurrent = mysql_fetch_array($currentPics))
+			{
+				$counter++;
+				$pictureArray [$counter] = $pictureCurrent ['pictures_path'];
+				//var_dump( $pictureArray);
+				echo "<li class='active' data-slide-to='".$counter."' data-target='#myCarousel'></li>";	
+			}
+			//$_POST['currentNumPics'] = sizeof($_POST['currentCarPics']);
+			//var_dump( $_POST['currentNumPics']);
+			
+		?>
     </ol>
     <div class="carousel-inner">
-        <div class="item">
-            <img alt="First slide" data-src="holder.js/900x500/auto/#777:#7a7a7a/text:First slide" src="data:image/svg+xml;base64,PHN2…lyc3Qgc2xpZGU8L3RleHQ+PC9zdmc+"></img>
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>
-
-                        Example headline.
-
-                    </h1>
-                    <p>
-
-                        Note: If you're viewing this page via a 
-
-                        <code>
-
-                            file://
-
-                        </code>
-
-                         URL, the "next" and "previous" Glyphicon buttons …
-
-                    </p>
-                    <p>
-                        <a class="btn btn-lg btn-primary" role="button" href="#">
-
-                            Sign up today
-
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
         <div class="item active">
-            <img alt="Second slide" data-src="holder.js/900x500/auto/#666:#6a6a6a/text:Second slide" src="data:image/svg+xml;base64,PHN2…5kIHNsaWRlPC90ZXh0Pjwvc3ZnPg=="></img>
+            <img  align = "middle" alt="First slide" height="100" width="900"  src="<?php echo $_POST['currentCarPics']['pictures_path'];?>"></img>
             <div class="container">
-                <div class="carousel-caption">
-                    <h1>
-
-                        Another example headline.
-
-                    </h1>
-                    <p>
-
-                        Cras justo odio, dapibus ac facilisis in, egestas …
-
-                    </p>
+                <div class="carousel-caption">                               
                     <p>
                         <a class="btn btn-lg btn-primary" role="button" href="#">
 
-                            Learn more
+                            Buy Now
 
                         </a>
                     </p>
                 </div>
             </div>
         </div>
-        <div class="item">
-            <img alt="Third slide" data-src="holder.js/900x500/auto/#555:#5a5a5a/text:Third slide" src="data:image/svg+xml;base64,PHN2…hpcmQgc2xpZGU8L3RleHQ+PC9zdmc+"></img>
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>
+		<?php
+			
+			for($x=1; $x<=$counter; $x++)
+			{	
+				echo "
+				
+						<div class='item'>
+							<img  align = 'middle' alt='Slide not Available' height='".intval(500)."' width='".intval(900)."'  src='".$pictureArray[$x]."'></img>
+							<div class='container'>
+								<div class='carousel-caption'>                               
+									<p>
+										<a class='btn btn-lg btn-primary' role='button' href='#'>
 
-                        One more for good measure.
+											Buy Now
 
-                    </h1>
-                    <p>
+										</a>
+									</p>
+								</div>
+							</div>
+						</div>
+				
+				";
+				
+			}
+		
+		?>
 
-                        Cras justo odio, dapibus ac facilisis in, egestas …
 
-                    </p>
-                    <p>
-                        <a class="btn btn-lg btn-primary" role="button" href="#">
-
-                            Browse gallery
-
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
     </div>
     <a class="left carousel-control" data-slide="prev" href="#myCarousel">
         <span class="glyphicon glyphicon-chevron-left"></span>
@@ -257,9 +235,10 @@ include "header.php";
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-<script src="../../dist/js/bootstrap.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
 
-<script src="../../assets/js/docs.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 
 
 
