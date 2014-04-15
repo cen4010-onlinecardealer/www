@@ -10,7 +10,7 @@ include "header.php";
 <table border='0'name='orgMain' style='margin-left:auto;margin-right:auto;width:90%;font-size:12'>
 	<tr>
 		<td width='1%'></td>
-		<h1>Search your furute vehicle</h1>
+		<h1 class = "page-header" align = "center">Vehicle Search</h1>
 		
 		<td width='1%'></td>
 	</tr>
@@ -60,7 +60,7 @@ include "header.php";
 				<option value='20000' selected='selected'>$20,000 or less</option>
 				<option value='30000'>$30,000 or less</option>
 				<option value='50000'>$50,000 or less</option>
-				<option value='1000000'>$50,000 or more</option>
+				<option value='50001'>$50,000 or more</option>
 			</select>
 		</td> 
 		<td colspan='3' align='right'>
