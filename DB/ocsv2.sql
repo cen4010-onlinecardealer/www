@@ -64,11 +64,11 @@ CREATE TABLE IF NOT EXISTS `car` (
 -- Dumping data for table `car`
 --
 
-INSERT INTO `car` (`car_id`, `id_vin`, `make_id`, `model_id`, `year`, `condition_id`, `mileage`, `color`, `color_description`, `comments`, `price`, `status_id`, `picture_id`) VALUES
-(1, 'aaaa11111', 1, 1, 0, 1, 0, 'black', 'the black', 'it''s black', '0', 1, NULL),
-(2, '222333', 1, 1, 2010, 1, 10250, 'RED', '', '', '100251', 1, NULL),
-(3, 'M222-2244-5555-666', 3, 1, 2014, 2, 80000, 'red', 'the red car', 'the car is red', '251', 2, 0),
-(4, 'theOtherVin', 1, 1, 3015, 1, 0, '', '', '', '0', 1, 0);
+LOCK TABLES `car` WRITE;
+/*!40000 ALTER TABLE `car` DISABLE KEYS */;
+INSERT INTO `car` VALUES (1,'aaaabbbbvin1',1,1,0,1,0,'black','the black','A real beauty!',20050,1,NULL),(2,'aaaabbbbvin2',2,3,2010,2,10250,'red','',NULL,10251,1,NULL),(3,'aaaabbbbvin3',10,19,2014,2,80000,'red','the red car','Wont last!',8500,1,0),(4,'aaaabbbbvin4',7,14,2015,1,0,'blue','','Hot out of the oven...',21250,1,0),(5,'aaaabbbbvin5',5,9,2014,2,43000,'silver','','This is it!!!',50000,1,NULL),(6,'aaaabbbbvin6',7,13,2014,2,23000,'black',NULL,'They call it black beauty...',12300,1,NULL),(7,'aaaabbbbvin7',7,14,2014,1,0,'orange',NULL,'This car is for YOU!',23500,1,NULL),(8,'aaaabbbbvin8',5,10,2015,1,0,'orange',NULL,'Me quemo!!!!',50001,1,NULL);
+/*!40000 ALTER TABLE `car` ENABLE KEYS */;
+UNLOCK TABLES;
 
 -- --------------------------------------------------------
 
@@ -166,18 +166,11 @@ CREATE TABLE IF NOT EXISTS `make_id` (
 -- Dumping data for table `make_id`
 --
 
-INSERT INTO `make_id` (`make_id`, `make`) VALUES
-(1, 'Acura'),
-(2, 'BMW'),
-(3, 'Cadillac'),
-(4, 'Dodge'),
-(5, 'Ferrari'),
-(6, 'Ford'),
-(7, 'Honda'),
-(8, 'Hunday'),
-(9, 'Jaguar'),
-(10, 'Nissan'),
-(11, 'Toyota');
+LOCK TABLES `make_id` WRITE;
+/*!40000 ALTER TABLE `make_id` DISABLE KEYS */;
+INSERT INTO `make_id` VALUES (1,'Acura'),(2,'BMW'),(3,'Cadillac'),(4,'Dodge'),(5,'Ferrari'),(6,'Ford'),(7,'Honda'),(8,'Hunday'),(9,'Jaguar'),(10,'Nissan'),(11,'Toyota');
+/*!40000 ALTER TABLE `make_id` ENABLE KEYS */;
+UNLOCK TABLES;
 
 -- --------------------------------------------------------
 
@@ -196,29 +189,11 @@ CREATE TABLE IF NOT EXISTS `model_id` (
 -- Dumping data for table `model_id`
 --
 
-INSERT INTO `model_id` (`model_id`, `make_id`, `model`) VALUES
-(1, 1, 'S100'),
-(2, 1, 'S150'),
-(3, 2, 'S200'),
-(4, 2, 'S250'),
-(5, 3, 'S300'),
-(6, 3, 'S350'),
-(7, 4, 'S400'),
-(8, 4, 'S450'),
-(9, 5, 'S500'),
-(10, 5, 'S550'),
-(11, 6, 'S600'),
-(12, 6, 'S650'),
-(13, 7, 'S700'),
-(14, 7, 'S750'),
-(15, 8, 'S800'),
-(16, 8, 'S850'),
-(17, 9, 'S900'),
-(18, 9, 'S950'),
-(19, 10, 'Altima'),
-(20, 10, 'Sentra'),
-(21, 11, 'Corolla'),
-(22, 11, 'Camry');
+LOCK TABLES `model_id` WRITE;
+/*!40000 ALTER TABLE `model_id` DISABLE KEYS */;
+INSERT INTO `model_id` VALUES (1,1,'S100'),(2,1,'S150'),(3,2,'Gran Turismo'),(4,2,'M6 Gran Coupe'),(5,3,'Escalade'),(6,3,'Ats'),(7,4,'Taurus'),(8,4,'Durango'),(9,5,'Murcielago'),(10,5,'Diablo'),(11,6,'Taurus'),(12,6,'Explorer'),(13,7,'Civic'),(14,7,'Accord'),(15,8,'S800'),(16,8,'S850'),(17,9,'S900'),(18,9,'S950'),(19,10,'Altima'),(20,10,'Sentra'),(21,11,'Corolla'),(22,11,'Camry');
+/*!40000 ALTER TABLE `model_id` ENABLE KEYS */;
+UNLOCK TABLES;
 
 -- --------------------------------------------------------
 
