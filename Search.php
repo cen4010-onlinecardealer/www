@@ -34,10 +34,10 @@
 						//Search by VIN ONLY
 						if($_POST['id_vin'] != '')
 							{
-								$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, status_id, condition_id, mileage, make, model, car_condition_name FROM car
-														INNER JOIN make_id ON car.make_id = make_id.make_id
-														INNER JOIN model_id ON car.model_id = model_id.model_id
-														INNER JOIN car_condition ON car.condition_id = car_condition.id_car_condition
+								$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, status_id, condition_id, mileage, make, model, car_condition_name FROM ocsv2.car
+														INNER JOIN ocsv2.make_id ON car.make_id = make_id.make_id
+														INNER JOIN ocsv2.model_id ON car.model_id = model_id.model_id
+														INNER JOIN ocsv2.car_condition ON car.condition_id = car_condition.id_car_condition
 														WHERE status_id=1 AND id_vin='".$_POST['id_vin']."'");
 								if($carList == NULL) {$carListErr = " No VIN could be found";}
 							}
@@ -45,20 +45,28 @@
 							{
 								if($carPriceMax <= 50000)
 									{
-										$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, status_id, condition_id, mileage, make, model, car_condition_name FROM car
-															INNER JOIN make_id ON car.make_id = make_id.make_id
-															INNER JOIN model_id ON car.model_id = model_id.model_id
-															INNER JOIN car_condition ON car.condition_id = car_condition.id_car_condition
+
+//echo "condition $carPriceMax <= 50000";
+
+//$carList=mysql_query("SELECT * from ocsv2.car");
+//echo "carList after assignment of mysql_query: $carList ";
+
+										$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, status_id, condition_id, mileage, make, model, car_condition_name FROM ocsv2.car
+															INNER JOIN ocsv2.make_id ON car.make_id = make_id.make_id
+															INNER JOIN ocsv2.model_id ON car.model_id = model_id.model_id
+															INNER JOIN ocsv2.car_condition ON car.condition_id = car_condition.id_car_condition
 															WHERE status_id=1 AND price <".$carPriceMax."
 															ORDER BY price");
-									}
+									
+
+}
 								
 								else
 									{
-										$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, status_id, condition_id, mileage, make, model, car_condition_name FROM car
-														INNER JOIN make_id ON car.make_id = make_id.make_id
-														INNER JOIN model_id ON car.model_id = model_id.model_id
-														INNER JOIN car_condition ON car.condition_id = car_condition.id_car_condition
+										$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, status_id, condition_id, mileage, make, model, car_condition_name FROM ocsv2.car
+														INNER JOIN ocsv2.make_id ON car.make_id = make_id.make_id
+														INNER JOIN ocsv2.model_id ON car.model_id = model_id.model_id
+														INNER JOIN ocsv2.car_condition ON car.condition_id = car_condition.id_car_condition
 														WHERE status_id=1 AND price >".$carPriceMax."
 														ORDER BY price");
 									}
@@ -66,37 +74,38 @@
 							
 							if($_POST['year'] != '')//Search by year
 							{	
-								$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, car.status_id, condition_id, mileage, make, model, car_condition_name FROM car
-														INNER JOIN make_id ON car.make_id = make_id.make_id
-														INNER JOIN model_id ON car.model_id = model_id.model_id
-														INNER JOIN car_condition ON car.condition_id = car_condition.id_car_condition
+								$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, car.status_id, condition_id, mileage, make, model, car_condition_name FROM ocsv2.car
+														INNER JOIN ocsv2.make_id ON car.make_id = make_id.make_id
+														INNER JOIN ocsv2.model_id ON car.model_id = model_id.model_id
+														INNER JOIN ocsv2.car_condition ON car.condition_id = car_condition.id_car_condition
 														WHERE status_id=1 AND year='".$_POST['year']."'
 														ORDER BY price");
+
 							}
 							if($_POST['make'] != '')//Search by make and organize by model
 							{
-								$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, status_id, condition_id, mileage, make, model, car_condition_name FROM car
-														INNER JOIN make_id ON car.make_id = make_id.make_id
-														INNER JOIN model_id ON car.model_id = model_id.model_id
-														INNER JOIN car_condition ON car.condition_id = car_condition.id_car_condition
+								$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, status_id, condition_id, mileage, make, model, car_condition_name FROM ocsv2.car
+														INNER JOIN ocsv2.make_id ON car.make_id = make_id.make_id
+														INNER JOIN ocsv2.model_id ON car.model_id = model_id.model_id
+														INNER JOIN ocsv2.car_condition ON car.condition_id = car_condition.id_car_condition
 														WHERE status_id=1 AND make='".$_POST['make']."'
 														ORDER BY model");
 							}
 							if($_POST['model'] != '')//Search by model
 							{
-								$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, status_id, condition_id, mileage, make, model, car_condition_name FROM car
-														INNER JOIN make_id ON car.make_id = make_id.make_id
-														INNER JOIN model_id ON car.model_id = model_id.model_id
-														INNER JOIN car_condition ON car.condition_id = car_condition.id_car_condition
+								$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, status_id, condition_id, mileage, make, model, car_condition_name FROM ocsv2.car
+														INNER JOIN ocsv2.make_id ON car.make_id = make_id.make_id
+														INNER JOIN ocsv2.model_id ON car.model_id = model_id.model_id
+														INNER JOIN ocsv2.car_condition ON car.condition_id = car_condition.id_car_condition
 														WHERE status_id=1 AND model='".$_POST['model']."'
 														ORDER BY price");
 							}
 							if($_POST['color'] != '')//Search by color
 							{
-								$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, status_id, condition_id, mileage, make, model, car_condition_name FROM car
-														INNER JOIN make_id ON car.make_id = make_id.make_id
-														INNER JOIN model_id ON car.model_id = model_id.model_id
-														INNER JOIN car_condition ON car.condition_id = car_condition.id_car_condition
+								$carList=mysql_query("SELECT car_id, car.make_id, car.model_id, year, color, price, status_id, condition_id, mileage, make, model, car_condition_name FROM ocsv2.car
+														INNER JOIN ocsv2.make_id ON car.make_id = make_id.make_id
+														INNER JOIN ocsv2.model_id ON car.model_id = model_id.model_id
+														INNER JOIN ocsv2.car_condition ON car.condition_id = car_condition.id_car_condition
 														WHERE status_id=1 AND color='".$_POST['color']."'
 														ORDER BY price");
 							}//End of search
