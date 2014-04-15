@@ -24,9 +24,9 @@ include "header.php";
 	}
 	
 	$currentCar=mysql_query("SELECT *, make, model, car_condition_name FROM ocsv2.car
-									INNER JOIN make_id ON car.make_id = make_id.make_id
-									INNER JOIN model_id ON car.model_id = model_id.model_id
-									INNER JOIN car_condition ON car.condition_id = car_condition.id_car_condition
+									INNER JOIN ocsv2.make_id ON car.make_id = make_id.make_id
+									INNER JOIN ocsv2.model_id ON car.model_id = model_id.model_id
+									INNER JOIN ocsv2.car_condition ON car.condition_id = car_condition.id_car_condition
 									WHERE status_id=1 AND car_id='".$currentCar_id."'");
 														
 	$currentPics=mysql_query("SELECT pictures_path FROM ocsv2.car_pictures
