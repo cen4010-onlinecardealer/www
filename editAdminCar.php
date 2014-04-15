@@ -113,6 +113,56 @@ if(isset($_POST['carID'])){
 			//$picture_id=$_POST['picture_id'];	
 		}
 	}
+	if(isset($_POST['savePic'])){
+		if($carID==0){echo "Error: Car must be added first";}
+		else{
+			$allowedExts = array("gif", "jpeg", "jpg", "png");
+			$temp = explode(".", $_FILES["file"]["name"]);
+			$extension = end($temp);
+			if ((($_FILES["file"]["type"] == "image/gif")
+			|| ($_FILES["file"]["type"] == "image/jpeg")
+			|| ($_FILES["file"]["type"] == "image/jpg")
+			|| ($_FILES["file"]["type"] == "image/pjpeg")
+			|| ($_FILES["file"]["type"] == "image/x-png")
+			|| ($_FILES["file"]["type"] == "image/png"))
+			&& in_array($extension, $allowedExts)){
+				if ($_FILES["file"]["error"] > 0){
+					echo "Error: " . $_FILES["file"]["error"] . "<br>";
+				}
+				else{
+					/*echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+					echo "Type: " . $_FILES["file"]["type"] . "<br>";
+					echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+					echo "Stored in: " . $_FILES["file"]["tmp_name"];
+					*/
+					$path= "carPics/".$carID."/";
+					if (file_exists($path . $_FILES["file"]["name"])){
+						echo $_FILES["file"]["name"] . " already exists. ";
+					}
+					else{
+						if ( ! is_dir($path)) {
+							mkdir($path);
+						}
+						move_uploaded_file($_FILES["file"]["tmp_name"],
+						$path . $_FILES["file"]["name"]);
+						echo "Stored in: " . $path . $_FILES["file"]["name"];
+						
+						mysql_query("INSERT INTO car_pictures (car_id, pictures_path)
+										VALUES('".$carID."', '".$path . $_FILES["file"]["name"]."')");
+					}
+				}
+			}
+			else{
+				echo "Invalid file";
+			}
+		}
+	}
+	if(isset($_POST['delPic'])){
+		echo $_POST['picPath'];
+		mysql_query("DELETE FROM car_pictures WHERE id_car_pictures='".$_POST['delPicID']."'");
+		unlink($_POST['picPath']);
+	}
+	
 }
 else{die('No Car Selected');}
 ?>
@@ -253,25 +303,41 @@ else{die('No Car Selected');}
 	</tr>
 	<tr>
 		<td width='3%'></td>
-		<td><Form name='editPictures' method='post' action='editAdminCar.php'>
-			<input type='hidden' name='carID' value='<?php echo $_POST['carID'];?>' />
+		<td><Form name='editPictures' method='post' action='editAdminCar.php' enctype="multipart/form-data">
+			<input type='hidden' name='carID' value='<?php echo $carID;?>' />
 			<fieldset class='divFormatHeader'><legend>Pictures</legend>
 			<table border='0' width='100%' name='orgCarDetails'>
 				<tr>
 					<td valign='top' width='50%'>
-						<fieldset class='divFormat'><legend>M:</legend>
-						<input type='text' name='m' style='width:100%' value='<?php echo $picture_id;?>'/>
-						</fieldset>
-					</td>
-					<td valign='top'>
-						<fieldset class='divFormat'><legend>MM:</legend>
-						<input type='text' name='MM' style='width:100%' value='<?php echo $model_id;?>'/>
+						<fieldset class='divFormat'><legend>Add New Picture:</legend>
+							<label for="file">Filename:</label>
+							<input type="file" name="file" id="file"><br/>
 						</fieldset>
 					</td>
 				</tr>
 				<tr>
 					<td align='right' valign='top' colspan='2'>
 						<input type='submit' name='savePic' value='Save'/>
+					</td>
+				</tr>
+				<tr>
+					<td valign='top' width='50%'>
+						<fieldset class='divFormat'><b>Pictures:</b><br/><br/>
+						<?php
+							$picsQ=mysql_query("SELECT id_car_pictures, pictures_path from car_pictures
+													WHERE car_id=".$carID."");
+							while($picsQDB=mysql_fetch_array($picsQ)){
+								echo "<img width='100' height='100' src='".$picsQDB['pictures_path']."' alt='No Match in Server' /> <br/>
+								<Form name='DelPictures' method='post' action='editAdminCar.php'>
+								<input type='hidden' name='carID' value='".$carID."' />
+								<input type='hidden' name='delPicID' value='".$picsQDB['id_car_pictures']."' />
+								<input type='hidden' name='picPath' value='".$picsQDB['pictures_path']."' />
+								<input type='submit' value='Del' name='delPic' />
+								</Form>
+								<br/><br/>";
+							}
+						?>
+						</fieldset>
 					</td>
 				</tr>
 			</table>					

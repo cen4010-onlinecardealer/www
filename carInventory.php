@@ -12,6 +12,15 @@ if (!$db_selected) {
 if(isset($_POST['delCar'])){
 	mysql_query("DELETE FROM car
 					WHERE car_id=".$_POST['carID']."");
+					
+	$picsQ=mysql_query("SELECT id_car_pictures, pictures_path from car_pictures
+						WHERE car_id=".$_POST['carID']."");
+	
+	while($picsQDB=mysql_fetch_array($picsQ)){
+		unlink($picsQDB['pictures_path']);
+	}
+	mysql_query("DELETE FROM car_pictures WHERE car_id='".$_POST['carID']."'");
+	rmdir("carPics/".$_POST['carID']);
 }
 ?>
 
@@ -36,7 +45,7 @@ if(isset($_POST['delCar'])){
 								INNER JOIN make_id ON car.make_id = make_id.make_id
 								INNER JOIN model_id ON car.model_id = model_id.model_id
 								INNER JOIN car_status ON car.status_id = car_status.id_car_status
-								ORDER BY status_id, make_id");
+								ORDER BY status_id, make_id, id_vin");
 		$line=0;
 		while($carListDB=mysql_fetch_array($carList)){
 			if($line!=0){
